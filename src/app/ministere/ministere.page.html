@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Idées partagé par ministere</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="accueil"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-row>
+    <ion-col>
+      <ion-card class="crd">
+        <ion-card-header>
+          <img
+            class="ig"
+            src="../../assets/images/minis.png"
+            routerLink="/ministere"
+          />
+          <ion-card-title>Nom du ministere</ion-card-title>
+          <ion-card-content> Description du ministere </ion-card-content>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <div class="av">Partager votre idée ou avis ici</div>
+
+  <div class="d-flex flex-start mb-4">
+    <img
+      class="rounded-circle shadow-1-strong me-3"
+      src="../../assets/images/avatar.png"
+      alt="avatar"
+      width="65"
+      height="65"
+    />
+    <div class="card w-100">
+      <div class="card-body p-4">
+        <div class="">
+          <h6>Abdoulaye Sy</h6>
+
+          <p>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
+            scelerisque ante sollicitudin. Cras purus odio, vestibulum in
+            vulputate at, tempus
+          </p>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+              <a href="#!" class="link-muted me-2"
+                ><i class="bi bi-hand-thumbs-up-fill"></i>132</a
+              >
+              <a href="#!" class="link-muted"
+                ><i class="bi bi-hand-thumbs-down-fill"></i>15</a
+              >
+            </div>
+            <a href="/commentaire" class="link-muted"
+              ><i class="bi bi-chat-dots"></i
+            ></a>
+            <a href="#!" class="link-muted"><i class="bi bi-trash3"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex flex-start mb-4">
+    <img
+      class="rounded-circle shadow-1-strong me-3"
+      src="../../assets/images/avatar.png"
+      alt="avatar"
+      width="65"
+      height="65"
+    />
+    <div class="card w-100">
+      <div class="card-body p-4">
+        <div class="">
+          <h6>Abass Maiga</h6>
+          <p>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
+            scelerisque ante sollicitudin. Cras purus odio, vestibulum in
+            vulputate at, tempus
+          </p>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+              <a href="#!" class="link-muted me-2"
+                ><i class="bi bi-hand-thumbs-up-fill"></i>132</a
+              >
+              <a href="#!" class="link-muted"
+                ><i class="bi bi-hand-thumbs-down-fill"></i>15</a
+              >
+            </div>
+            <a href="/commentaire" class="link-muted"
+              ><i class="bi bi-chat-dots"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-light p-2">
+   
+    <div class="input-group">
+      <textarea rows="1" class="form-control shadow-none textarea"></textarea>
+      <button class="btn btn-outline-secondary shadow-none" type="button"><i class="bi bi-cursor-fill"></i></button>
+      <button class="btn btn-outline-secondary shadow-none" type="button"><i class="bi bi-mic"></i></button>
+    </div>
+  </div>
+</ion-content>
