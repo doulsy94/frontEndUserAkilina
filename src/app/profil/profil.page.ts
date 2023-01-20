@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-profil',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilPage implements OnInit {
 
-  constructor() { }
+ constructor (private http: HttpClient, private tokenStorage: TokenStorageService, private router: Router) { }
 
   ngOnInit() {
   }
+
+
+logout(): void{
+  this.tokenStorage.signOut();
+  this.router.navigateByUrl('connexion')
+  //window.location.reload();
+}
 
 }

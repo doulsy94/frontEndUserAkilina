@@ -1,108 +1,110 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Idées partagé par ministere</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="accueil"></ion-back-button>
+      <ion-back-button text="Minis."></ion-back-button>
     </ion-buttons>
+    <ion-title>Ministere</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-row>
-    <ion-col>
-      <ion-card class="crd">
-        <ion-card-header>
-          <img
-            class="ig"
-            src="../../assets/images/minis.png"
-            routerLink="/ministere"
-          />
-          <ion-card-title>Nom du ministere</ion-card-title>
-          <ion-card-content> Description du ministere </ion-card-content>
-        </ion-card-header>
-      </ion-card>
-    </ion-col>
-  </ion-row>
+  <ion-item lines="full">
+    <ion-button slot="start" size="small" fill="clear"> Idee Ecrit </ion-button>
+    <ion-button slot="end" size="small" fill="clear"> Idee Vocal </ion-button>
+  </ion-item>
+
+  <div class="" style="width: 100%; margin-left: auto; margin-right: auto">
+    <ion-row>
+      <ion-col>
+        <ion-card class="crd">
+          <ion-card-header>
+            <!-- <img class="igm" src={{image}} srcset="" /> -->
+            <ion-card-title style="text-align: center; font-weight:bold;">{{libelle}}</ion-card-title>
+            <ion-card-content style="text-align: justify;"> {{description}} </ion-card-content>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
   <div class="av">Partager votre idée ou avis ici</div>
 
-  <div class="d-flex flex-start mb-4">
-    <img
-      class="rounded-circle shadow-1-strong me-3"
-      src="../../assets/images/avatar.png"
-      alt="avatar"
-      width="65"
-      height="65"
-    />
-    <div class="card w-100">
-      <div class="card-body p-4">
-        <div class="">
-          <h6>Abdoulaye Sy</h6>
+  <div class="" *ngFor="let ide of ide, let i=index">
 
-          <p>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-            scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-            vulputate at, tempus
-          </p>
-
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center">
-              <a href="#!" class="link-muted me-2"
-                ><i class="bi bi-hand-thumbs-up-fill"></i>132</a
-              >
-              <a href="#!" class="link-muted"
-                ><i class="bi bi-hand-thumbs-down-fill"></i>15</a
-              >
-            </div>
-            <a href="/commentaire" class="link-muted"
-              ><i class="bi bi-chat-dots"></i
-            ></a>
-            <a href="#!" class="link-muted"><i class="bi bi-trash3"></i></a>
-          </div>
+    <div class="card">
+      <div class="tout">
+        <div class="first">
+          <ion-avatar slot="start">
+            <img src="../../assets/images/avatar.png" />
+          </ion-avatar>
         </div>
+        
+        <div class="md">
+          <h3>{{ide.user.username}}</h3>
+          
+          <p>{{ide.contenu_idee}}</p>
+          
+        </div>
+      <div class="pp">
+        <i class="fas fa-regular fas fa-ellipsis-vertical " slot="start"></i>
+      </div>
+      </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+          <a href="#!" class="link-muted me-2" style=""
+            ><i class="bi bi-hand-thumbs-up-fill"></i></a
+          >{{jaime[i]}}
+          <a href="#!" class="link-muted" style=""
+            ><i class="bi bi-hand-thumbs-down-fill"></i></a
+          >{{jaimePas[i]}}
+        </div>
+        <a href="/commentaire" class="link-muted ch"
+          ><i class="bi bi-chat-dots"></i
+        ></a>
       </div>
     </div>
-  </div>
 
-  <div class="d-flex flex-start mb-4">
-    <img
-      class="rounded-circle shadow-1-strong me-3"
-      src="../../assets/images/avatar.png"
-      alt="avatar"
-      width="65"
-      height="65"
-    />
-    <div class="card w-100">
-      <div class="card-body p-4">
-        <div class="">
-          <h6>Abass Maiga</h6>
-          <p>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-            scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-            vulputate at, tempus
-          </p>
 
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center">
-              <a href="#!" class="link-muted me-2"
-                ><i class="bi bi-hand-thumbs-up-fill"></i>132</a
-              >
-              <a href="#!" class="link-muted"
-                ><i class="bi bi-hand-thumbs-down-fill"></i>15</a
-              >
-            </div>
-            <a href="/commentaire" class="link-muted"
-              ><i class="bi bi-chat-dots"></i
-            ></a>
+    <!-- <ion-item>
+      <ion-avatar slot="start">
+        <img src="../../assets/images/avatar.png" />
+      </ion-avatar>
+      <ion-label>
+        <div class="flex-box deux">
+          <div>
+            <h3>{{ide.user.username}}</h3>
+          </div>
+          <div class="spacebetween">
+            <i class="fas fa-regular fas fa-ellipsis-vertical" slot="end"></i>
           </div>
         </div>
+        <ion-text>
+        <p>{{ide.contenu_idee}}</p>
+        </ion-text>
+    </ion-label>
+    </ion-item> -->
+    <!-- <ion-item>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+          <a href="#!" class="link-muted me-2" style="margin-left: 8px"
+            ><i class="bi bi-hand-thumbs-up-fill"></i></a
+          >{{jaime[i]}}
+          <a href="#!" class="link-muted" style="margin-left: 4px"
+            ><i class="bi bi-hand-thumbs-down-fill"></i></a
+          >{{jaimePas[i]}}
+        </div>
+        <a href="/commentaire" class="link-muted"
+          ><i class="bi bi-chat-dots"></i
+        ></a>
       </div>
-    </div>
-  </div>
-  <div class="bg-light p-2">
-   
-    <div class="input-group">
-      <textarea rows="1" class="form-control shadow-none textarea"></textarea>
-      <button class="btn btn-outline-secondary shadow-none" type="button"><i class="bi bi-cursor-fill"></i></button>
-      <button class="btn btn-outline-secondary shadow-none" type="button"><i class="bi bi-mic"></i></button>
-    </div>
+    </ion-item> -->
   </div>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-input placeholder="Votre message"></ion-input>
+      <ion-buttons slot="end">
+        <ion-button> Envoyer </ion-button>
+      </ion-buttons>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

@@ -24,3 +24,23 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+// ion-content{
+//     width: calc(100% + 20px);
+//     --padding-end: 0px !important;
+// }
+// ion-content::part(scroll){
+//     margin-left: -20px;
+// }
+
+ion-content{
+    // ICI ON BLOCK LE SCROLLING
+    --offset-bottom: auto!important;
+    background: #F8F6FB;
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

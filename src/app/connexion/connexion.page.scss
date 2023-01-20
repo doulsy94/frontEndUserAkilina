@@ -1,33 +1,25 @@
-.container{
-    background-color: #1D3F6D;
-}
+
 .form-group {
-    margin-bottom: 23px;
-}
-label.form-check-label {
-    color: white;
-}
-.connexion{
-    width: 80%;
-    background-color: #24A8F2;
-    border-radius: 11PX;
-    color: white; 
-    height: 35px; 
-    margin-bottom: 15px;
-}
-h2 {
-    color: white;
-    text-align: center;
-    margin-bottom: 24px;
-}
-input.connexion {
-    margin-top: -13px;
-}
-input.form-control {
-    width: 100%;
+    margin-bottom: 6px;
 }
 
-p{
-    color: white;
+img {
+    width: 80%;
+}
+.connexion{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #24A8F2;
+    color: white; 
+    border-radius: 11PX;
+    height: 35px; 
+}
+p.ins {
+    margin-top: 10px;
+}
+label {
+    display: inline-block;
+    font-size: 11px;
 }
 

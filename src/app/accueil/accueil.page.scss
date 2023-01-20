@@ -1,18 +1,24 @@
+
+.pag {
+    display: flex;
+    width: 272px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-left: -20px;
+}
+
+img{
+    width: 100% !important;
+    height: 150px !important;
+    object-fit: cover;
+}
+
 ion-card-subtitle{
-    text-align: center;
-    color: black;
-}
-.tit{
-    text-align: center;
-    font-family: "Poppins, Roboto";
-    font-size: large;
-}
-.crd{
-    background-color: #F6F0F0;
-}
-.ig{
-    margin-left: 5px;
-}
+        text-align: center;
+        color: black;
+    }
+
+
 
 
 
