@@ -73,7 +73,7 @@ export class MinisterePage implements OnInit {
     })
 
 
-  }  
+  }   
   sendMessage(){
     console.log('messageText: '+this.messageText)
   }

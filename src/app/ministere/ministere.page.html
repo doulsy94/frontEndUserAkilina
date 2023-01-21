@@ -17,9 +17,9 @@
       <ion-col>
         <ion-card class="crd">
           <ion-card-header>
-            <!-- <img class="igm" src={{image}} srcset="" /> -->
+            <img class="igm" src={{image}} srcset="" />
             <ion-card-title style="text-align: center; font-weight:bold;">{{libelle}}</ion-card-title>
-            <ion-card-content style="text-align: justify;"> {{description}} </ion-card-content>
+            <ion-card-content style="text-align:center;"> {{description}} </ion-card-content>
           </ion-card-header>
         </ion-card>
       </ion-col>
@@ -44,15 +44,22 @@
           
         </div>
       <div class="pp">
-        <i class="fas fa-regular fas fa-ellipsis-vertical " slot="start"></i>
+        <div class="dropdown">
+          <i type="button" data-bs-toggle="dropdown" aria-expanded="false" class="fa-solid fa-ellipsis"  slot="start" slot="start"></i>
+          
+          <ul class="dropdown-menu">
+            <li><button class="dropdown-item" href="#">Modifier <i class="bi bi-pencil" style="color: rgb(98, 163, 85);"></i> </button></li>
+            <li><button class="dropdown-item" href="#">Supprimer <i class="bi bi-trash3" style="color: red;"></i></button></li>
+          </ul>
+        </div>
       </div>
       </div>
       <div class="d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
-          <a href="#!" class="link-muted me-2" style=""
+          <a href="#!" class="link-muted me-2"
             ><i class="bi bi-hand-thumbs-up-fill"></i></a
           >{{jaime[i]}}
-          <a href="#!" class="link-muted" style=""
+          <a href="#!" class="link-muted"
             ><i class="bi bi-hand-thumbs-down-fill"></i></a
           >{{jaimePas[i]}}
         </div>
@@ -63,39 +70,8 @@
     </div>
 
 
-    <!-- <ion-item>
-      <ion-avatar slot="start">
-        <img src="../../assets/images/avatar.png" />
-      </ion-avatar>
-      <ion-label>
-        <div class="flex-box deux">
-          <div>
-            <h3>{{ide.user.username}}</h3>
-          </div>
-          <div class="spacebetween">
-            <i class="fas fa-regular fas fa-ellipsis-vertical" slot="end"></i>
-          </div>
-        </div>
-        <ion-text>
-        <p>{{ide.contenu_idee}}</p>
-        </ion-text>
-    </ion-label>
-    </ion-item> -->
-    <!-- <ion-item>
-      <div class="d-flex justify-content-between align-items-center">
-        <div class="d-flex align-items-center">
-          <a href="#!" class="link-muted me-2" style="margin-left: 8px"
-            ><i class="bi bi-hand-thumbs-up-fill"></i></a
-          >{{jaime[i]}}
-          <a href="#!" class="link-muted" style="margin-left: 4px"
-            ><i class="bi bi-hand-thumbs-down-fill"></i></a
-          >{{jaimePas[i]}}
-        </div>
-        <a href="/commentaire" class="link-muted"
-          ><i class="bi bi-chat-dots"></i
-        ></a>
-      </div>
-    </ion-item> -->
+
+  
   </div>
 </ion-content>
 <ion-footer>
