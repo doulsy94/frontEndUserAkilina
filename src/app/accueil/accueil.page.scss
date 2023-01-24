@@ -17,8 +17,24 @@ ion-card-subtitle{
         text-align: center;
         color: black;
     }
+    ::before {
+        font-size: 33px;
+        position: relative;
+        margin-left: 84%;
+    }
 
-
+    .tit {
+        margin-bottom: 5%;
+        margin-top: 5%;
+        text-align: center;
+        font-weight: 900;
+    }
+    .row {
+        margin-top: 3%;
+    }
+    ion-col.ios.hydrated {
+        margin-top: -30px;
+    }
 
 
 

@@ -1,21 +1,57 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Profil</ion-title>
+    <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="container">
+<ion-content >
+  <!-- <div class="container">
   
     <div class="text-center ">
-      <img src="../../assets/images/avatar.png" alt="profil" class="prof">
+     
+        <img src="../../assets/images/avatar.png" alt="" class="prof" srcset="">
+        <ion-badge><ion-icon name="camera"></ion-icon></ion-badge>
+   
     </div>
     <div class="text-center">
       <h3><b>Abdoulaye Sy</b></h3>
     </div>
 
-    <div class="text-center">
-      <button  class="information" routerLink="/detailsprofil">Information personnel</button>
+  
+<div class="text-center">
+  <button
+    type="submit"
+    value=""
+    class="modifier"
+    (click)="openModal()"
+    
+  >
+    Modifier
+  </button>
+</div>
+
+ 
+    
+    <div class="row">
+      <div class="text-centre in">
+        <div class="col-12 ">
+          <p><b>Adresse:</b> Bamako</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="text-centre in">
+        <div class="col-12 ">
+          <p><b>E-mail:</b> doulsy2021@gmail.com</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="text-centre in">
+        <div class="col-12 ">
+          <p><b>Téléphone:</b> 0022394218444 </p>
+        </div>
+      </div>
     </div>
     
     <div class="text-center">
@@ -23,5 +59,72 @@
     </div>
  
 
-  </div>
+  </div> -->
+
+    <div class="container">
+      
+      <section class="profile">
+        <div class="p-content">
+          <div class="image">
+            <img src="https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmxhY2slMjBtYW58ZW58MHx8MHx8&w=1000&q=80" alt="Profile">
+            <ion-badge><ion-icon name="camera"></ion-icon></ion-badge>
+          </div>
+          <div class="names">
+            <div class="name">
+              Abdoulaye Sy
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="settings">
+          <div class="setting">
+            <div class="btnn"><ion-button fill="clear" routerLink="/password-update">Modifier mot de passe</ion-button></div>
+            <div class="s-title">
+              <h4 style="text-align: center;">Information du compte</h4>
+            </div>
+            <div class="s-content">
+              <div class="set">
+                <span class="label">Nom d'utilisateur</span>
+                <span class="content">Abdoulaye Sy</span>
+              </div>
+              <div class="set">
+                <span class="label">Téléphone</span>
+                <span class="content">+223 ********</span>
+              </div>
+              <div class="set">
+                <span class="label">Adresse</span>
+                <span class="content">Bamako, Faladie</span>
+              </div>
+              <div class="set">
+                <span class="label">Email</span>
+                <span class="content">doulsy2021gmail.com</span>
+              </div>
+            </div>
+            <div class="btnn"><ion-button fill="clear" (click)="openModal()">Modifier Compte</ion-button></div>
+          </div>
+          <div class="setting app">
+            <div class="s-title">
+              <h4>Parametre de l'application</h4>
+            </div>
+            <div class="s-content">
+              <div class="set">
+                <span class="label">Conditions d'utilisation</span>
+              </div>
+              <div class="set">
+                <span class="label">Politique de confidentialité</span>
+              </div>
+
+            </div>
+           <div class="wrapper">
+            <div class="ion-activatable ripple-parent custom-parent" (click)="logout()">
+              Déconnexion
+              <ion-ripple-effect></ion-ripple-effect>
+            </div>
+          </div>
+          
+          </div>
+      </section>
+      
+    </div>
+
 </ion-content>

@@ -11,6 +11,12 @@ import { UsersService } from '../_services/users.service';
 })
 export class AccueilPage implements OnInit {
 
+  slideWorkouts = {
+    slidesPerView: 1.2,
+    initialSlide: 0,
+    speed: 400
+  }
+
   p:any;
   
   searchText:any

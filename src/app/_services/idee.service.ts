@@ -35,23 +35,26 @@ nombreMinistere(): Observable<any> {
 }
 
 //METHODE PERMETTANT D'AJOUTER UNE IDEE
-ajouterIdee(contexte: any, contenu: any, id_user: any, id_ministere: any): Observable<any> {
+ajouterIdee(contenu: any, id_user: any, id_ministere: any): Observable<any> {
 
-  const data: FormData = new FormData();
-  const idee = [{
-    "contexte": contexte,
-    "contenu": contenu
-  }]
-  data.append('idee', JSON.stringify(idee).slice(1, JSON.stringify(idee).lastIndexOf(']')));
+
+  const data = {
+    "contenu_idee": contenu
+  }
   return this.http.post(`${AUTH_API}/ajouter/${id_user}/${id_ministere}`, data);
 }
 
+//METHODE PERMETTANT DE LISTER UNE IDEE PAR ID
+lireIdeeById(id_idee: any): Observable<any> {
+
+  return this.http.get(`${AUTH_API}/lireParId/${id_idee}`);
+}
+
 //METHODE PERMETTANT DE MODIFIER UNE IDEE
-modifierIdee(id_idee: any, id_user: any, contexte: any, contenu: any): Observable<any> {
+modifierIdee(id_idee: any, id_user: any, contenu: any): Observable<any> {
 
   const data: FormData = new FormData();
   const idee = [{
-    "contexte": contexte,
     "contenu": contenu,
   }]
   data.append('idee', JSON.stringify(idee).slice(1, JSON.stringify(idee).lastIndexOf(']')));
@@ -125,6 +128,7 @@ lireJaimePasParIdIdee(id_idee:any): Observable<any>{
 nbreJaimePasParIdIdee(id_idee:any): Observable<any>{
   return this.http.get(`${AUTH_API2}/afficherNombreJaimePasParIdIdee/${id_idee}`);
 }
+
 
 }
 

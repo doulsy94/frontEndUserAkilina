@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button  (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <h3 style="text-align: center;"> Modification Profil </h3>
+    <div class="form" style="margin-top: 5%;">
+      <div class="input-box">
+        <span> Nom d'utilisateur *</span>
+        <input
+          class="form-control"
+          name="username"
+          id="username"
+          placeholder="Abdoulaye Sy"
+        >
+      </div>
+      <div class="input-box">
+        <span> Téléphone *</span>
+        <input
+          class="form-control"
+          name="telephone"
+          id="telephone"
+          placeholder="+223 ********"
+        >
+      </div>
+      <div class="input-box">
+        <span> Email *</span>
+        <input
+          class="form-control"
+          name="email"
+          id="email"
+          placeholder="******@gmail.com"
+        >
+      </div>
+      <div class="input-box">
+        <span> Adresse </span>
+        <input
+          class="form-control"
+          name="addresse"
+          id="addresse"
+          placeholder="Bamako, Faladie"
+        >
+      </div>
+    </div>
+ 
+</ion-content>

@@ -1,5 +1,7 @@
 {
   "name": "frontProjetAkilina",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

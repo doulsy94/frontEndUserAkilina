@@ -2,22 +2,24 @@
   <ion-toolbar>
     <ion-title>Commentaire </ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="ministere"></ion-back-button>
+      <ion-back-button defaultHref="ministere" (click)="goBack()"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-row>
-      <ion-col>
-        <ion-card class="crd" >
+  
+    <ion-row >
+      <ion-col >
+        <ion-card class="crd"  >
           <ion-card-header>
-            <ion-card-content style="text-align: center;"> Contenu de l'idée </ion-card-content>
+            <ion-card-content style="text-align: center;">{{contenu_ide}} </ion-card-content>
           </ion-card-header>
         </ion-card>
       </ion-col>
     </ion-row>
 
+ <div class="" *ngFor="let comment of comment">
     <div class="card" >
       <div class="tout">
         <div class="first">
@@ -27,10 +29,10 @@
         </div>
         
         <div class="md">
-          <h3>Abdoulaye Sy</h3>
+
+          <h3>{{comment.user.username}}</h3>
           
-          <p>zertyuioqsdfghuijopezrtyuizstrdhuoizretiuotu aezrtyuiopqsdfghuijoklaezrtyuiopzretoiupretu
-              aezrtyuiop^$qsdfghjklmwxcvbn,;azertyuio </p>
+          <p>{{comment.contenu_commentaire}} </p>
           
         </div>
       <div class="pp">
@@ -45,14 +47,15 @@
       </div>
       </div>
     </div>
-   
+ </div>
 </ion-content>
+
 <ion-footer>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-input placeholder="Votre message"></ion-input>
+      <ion-input placeholder="Votre message" [(ngModel)]="cont"></ion-input>
       <ion-buttons slot="end">
-        <ion-button> Envoyer </ion-button>
+        <ion-button (click)="onSubmit()"> Envoyer </ion-button>
       </ion-buttons>
     </ion-buttons>
   </ion-toolbar>

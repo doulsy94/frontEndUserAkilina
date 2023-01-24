@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button text="Minis."></ion-back-button>
+      <ion-back-button defaultHref="accueil" (click)="goBack()"></ion-back-button>
     </ion-buttons>
     <ion-title>Ministere</ion-title>
   </ion-toolbar>
@@ -9,7 +9,7 @@
 <ion-content>
   <ion-item lines="full">
     <ion-button slot="start" size="small" fill="clear"> Idee Ecrit </ion-button>
-    <ion-button slot="end" size="small" fill="clear"> Idee Vocal </ion-button>
+    <ion-button slot="end" size="small" fill="clear"><a href="/vocal">Idee Vocal</a></ion-button>
   </ion-item>
 
   <div class="" style="width: 100%; margin-left: auto; margin-right: auto">
@@ -59,27 +59,27 @@
           <a href="#!" class="link-muted me-2"
             ><i class="bi bi-hand-thumbs-up-fill"></i></a
           >{{jaime[i]}}
-          <a href="#!" class="link-muted"
+          <!-- <a href="#!" class="link-muted"
             ><i class="bi bi-hand-thumbs-down-fill"></i></a
-          >{{jaimePas[i]}}
+          >{{jaimePas[i]}} -->
         </div>
-        <a href="/commentaire" class="link-muted ch"
+        <a routerLink="/commentaire/{{ide.id_idee}}" class="link-muted ch"
           ><i class="bi bi-chat-dots"></i
         ></a>
       </div>
     </div>
 
+    
 
 
-  
   </div>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-input placeholder="Votre message"></ion-input>
+      <ion-input placeholder="Votre message" [(ngModel)]="cont"></ion-input>
       <ion-buttons slot="end">
-        <ion-button> Envoyer </ion-button>
+        <ion-button (click)="onSubmit()"> Envoyer </ion-button>
       </ion-buttons>
     </ion-buttons>
   </ion-toolbar>

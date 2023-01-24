@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Vocal </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="ministere"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="" style="width: 100%; margin-left: auto; margin-right: auto">
+    <ion-row>
+      <ion-col>
+        <ion-card class="crd">
+          <ion-card-header>
+            <img class="igm" src="" srcset="" />
+            <ion-card-title style="text-align: center; font-weight:bold;">libelle</ion-card-title>
+            <ion-card-content style="text-align:center;"> description</ion-card-content>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
+
+
+
+<div class="card" button *ngFor="let f of storedFileNames" (click)="playFile(f.name)" detail="false">
+  <div class="tout">
+    <div class="first">
+      <ion-avatar slot="start">
+        <img src="../../assets/images/avatar.png" />
+      </ion-avatar>
+    </div>
+    
+    <div class="md">
+      <h3>Abdoulaye Sy</h3>
+      
+      <ion-item >
+        {{f.name}}
+        <ion-button slot="end" (click)="deleteRecording(f.name)" fill="clear" color="danger">
+          <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </div>
+   
+  </div>
+</div>
+
+  </ion-content>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-row class="ion-align-items-center" style="margin-right: 20px;margin-left: 20px;">
+        <ion-col size="10">
+          <span *ngIf="!recording">
+            Appuyez et maintenez pour enregistrer
+          </span>
+          <span *ngIf="recording">
+            {{durationDisplay}}
+          </span>
+        </ion-col>
+        <ion-col size="2" fill="clear" #recordbtn  style="padding-right: 30px;"> 
+          
+          <ion-button style="margin-right: 100px;">
+            <ion-icon name="mic-outline" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-footer>
+  

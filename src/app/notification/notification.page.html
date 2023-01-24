@@ -1,30 +1,66 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Notifications </ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="accueil"></ion-back-button>
+    <ion-title slot="start">Notifications </ion-title>
+    <ion-buttons >
+      
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="" style="width: 98%; margin-left: auto; margin-right: auto;">
-  <ion-card class="crd in">
-    <ion-card-content>
-      Abdoulaye Sy viens de partager une idée dans le ministere de l'Agriculture
-    </ion-card-content>
-  </ion-card>
-  <ion-card class="crd in">
-    <ion-card-content>
-      Abass Maiga viens de partager une idée dans le ministere de l'enseignement
-      Superieur
-    </ion-card-content>
-  </ion-card>
-  <ion-card class="crd in">
-    <ion-card-content>
-      Youssouf Djiré viens de partager une idée dans le ministere de l'éducation
-      national
-    </ion-card-content>
-  </ion-card>
+<!-- <ion-content>
+  <div class="card" >
+    <div class="tout">
+      <div class="first">
+        <ion-avatar slot="start">
+          <img src="../../assets/images/avatar.png" />
+        </ion-avatar>
+      </div>
+      
+      <div class="md">
+        <h3>Abdoulaye Sy</h3> vient de partager une idée écrite dans le ministere 
+        de l'éducation nationale
+      </div>
+    </div>
   </div>
+
+  <div class="card" >
+    <div class="tout">
+      <div class="first">
+        <ion-avatar slot="start">
+          <img src="../../assets/images/avatar.png" />
+        </ion-avatar>
+      </div>
+      
+      <div class="md">
+        <h3>Abass Maiga</h3> vient de partager une idée vocale dans le ministere 
+        de l'éducation nationale
+      </div>
+    </div>
+  </div>
+
+</ion-content> -->
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-img src="https://i.pravatar.cc/300?u=b"></ion-img>
+      </ion-avatar>
+      <ion-label class="ion-text-wrap">
+        <p style="color: black;"> <span style="font-weight: 600;"> Abass Maiga </span> vient de faire 
+          une publication dans le <span style="font-weight: 600;">Ministère de l'education nationale</span></p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-img src="https://i.pravatar.cc/300?u=b"></ion-img>
+      </ion-avatar>
+      <ion-label class="ion-text-wrap">
+        <p style="color: black;"> <span style="font-weight: 600;"> Abdoulaye Sy </span> vient de faire 
+          une publication dans le <span style="font-weight: 600;">Ministère de l'enseignément supérieur et de la recherche scientifique</span></p>
+     
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

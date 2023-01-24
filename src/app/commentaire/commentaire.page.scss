@@ -54,11 +54,11 @@ p{
     text-align: center;
     font-weight: 900;
 }
-.deux {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
+// .deux {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-between;
+// }
 
 ion-buttons.buttons-first-slot.sc-ion-buttons-ios-h.sc-ion-buttons-ios-s.ios.hydrated {
     margin-bottom: 12px;
@@ -76,4 +76,7 @@ p{
 font-size: 12px;
 }
 
+.card {
+    margin-bottom: 3%;
+}
 

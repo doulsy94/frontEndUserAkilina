@@ -32,11 +32,10 @@ nombreCommentaire(): Observable<any> {
 
 ajouterCommentaire(contenu: any, id_user: any, id_idee: any): Observable<any> {
 
-  const data: FormData = new FormData();
-  const commentaire = [{
-    "contenu": contenu,
-  }]
-  data.append('commentaire', JSON.stringify(commentaire).slice(1, JSON.stringify(commentaire).lastIndexOf(']')));
+  const data = {
+    "contenu_commentaire": contenu
+  }
+
   return this.http.post(`${AUTH_API}/ajouter/${id_user}/${id_idee}`, data);
 }
 

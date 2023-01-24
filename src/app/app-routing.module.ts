@@ -37,13 +37,22 @@ const routes: Routes = [
     loadChildren: () => import('./inscription/inscription.module').then( m => m.InscriptionPageModule)
   },
   {
-    path: 'commentaire',
+    path: 'commentaire/:id',
     loadChildren: () => import('./commentaire/commentaire.module').then( m => m.CommentairePageModule)
   },
   {
-    path: 'detailsprofil',
-    loadChildren: () => import('./detailsprofil/detailsprofil.module').then( m => m.DetailsprofilPageModule)
+    path: 'vocal',
+    loadChildren: () => import('./vocal/vocal.module').then( m => m.VocalPageModule)
   },
+  {
+    path: 'mot-de-passe-oublie',
+    loadChildren: () => import('./mot-de-passe-oublie/mot-de-passe-oublie.module').then( m => m.MotDePasseOubliePageModule)
+  },
+  {
+    path: 'password-update',
+    loadChildren: () => import('./password-update/password-update.module').then( m => m.PasswordUpdatePageModule)
+  },
+  
 
 ];
 @NgModule({
