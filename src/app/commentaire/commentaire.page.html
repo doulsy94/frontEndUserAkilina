@@ -2,52 +2,79 @@
   <ion-toolbar>
     <ion-title>Commentaire </ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="ministere" (click)="goBack()"></ion-back-button>
+      <ion-back-button
+        defaultHref="ministere"
+        (click)="goBack()"
+      ></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  
-    <ion-row >
-      <ion-col >
-        <ion-card class="crd"  >
+  <div class="con">
+    <ion-row>
+      <ion-col>
+        <ion-card class="crd">
           <ion-card-header>
-            <ion-card-content style="text-align: center;">{{contenu_ide}} </ion-card-content>
+            <ion-card-content style="text-align: center">
+              {{contenu_ide}}
+            </ion-card-content>
           </ion-card-header>
         </ion-card>
       </ion-col>
     </ion-row>
 
- <div class="" *ngFor="let comment of comment">
-    <div class="card" >
-      <div class="tout">
-        <div class="first">
-          <ion-avatar slot="start">
-            <img src="../../assets/images/avatar.png" />
-          </ion-avatar>
-        </div>
-        
-        <div class="md">
+    <div class="" *ngFor="let ide of ide, let i=index">
+      <div class="card mt-2">
+        <div class="card-header">
+          <div class="d-flex justify-content-between">
+            <div>
+              <ion-avatar slot="start">
+                <img src="../../assets/images/avatar.png" class="imgae" />
+              </ion-avatar>
+            </div>
+            <div class="mm">
+              <ion-label>
+                <h3>{{comment.user.username}}</h3>
+              </ion-label>
+            </div>
+            <div>
+              <div class="dropdown">
+                <i
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  class="fa-solid fa-ellipsis"
+                  slot="start"
+                  slot="start"
+                ></i>
 
-          <h3>{{comment.user.username}}</h3>
-          
-          <p>{{comment.contenu_commentaire}} </p>
-          
+                <ul class="dropdown-menu">
+                  <li>
+                    <button class="dropdown-item" href="#">
+                      Modifier
+                      <i
+                        class="bi bi-pencil"
+                        style="color: rgb(98, 163, 85)"
+                      ></i>
+                    </button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item" href="#">
+                      Supprimer <i class="bi bi-trash3" style="color: red"></i>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-      <div class="pp">
-        <div class="dropdown">
-          <i type="button" data-bs-toggle="dropdown" aria-expanded="false" class="fa-solid fa-ellipsis"  slot="start" slot="start"></i>
-          
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Modifier <i class="bi bi-pencil" style="color: rgb(98, 163, 85);"></i> </a></li>
-            <li><a class="dropdown-item" href="#">Supprimer <i class="bi bi-trash3" style="color: red;"></i></a></li>
-          </ul>
+        <div class="card-body">
+          <p class="card-text">{{comment.contenu_commentaire}}</p>
         </div>
-      </div>
       </div>
     </div>
- </div>
+  </div>
 </ion-content>
 
 <ion-footer>

@@ -1,77 +1,113 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="accueil" (click)="goBack()"></ion-back-button>
+      <ion-back-button
+        defaultHref="accueil"
+        (click)="goBack()"
+      ></ion-back-button>
     </ion-buttons>
     <ion-title>Ministere</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<div class="sticky-top">
   <ion-item lines="full">
     <ion-button slot="start" size="small" fill="clear"> Idee Ecrit </ion-button>
-    <ion-button slot="end" size="small" fill="clear"><a href="/vocal">Idee Vocal</a></ion-button>
+    <ion-button slot="end" size="small" fill="clear"
+      ><a href="/vocal">Idee Vocal</a></ion-button
+    >
   </ion-item>
-
-  <div class="" style="width: 100%; margin-left: auto; margin-right: auto">
+</div>
+<ion-content>
+  <div class="con">
     <ion-row>
       <ion-col>
         <ion-card class="crd">
           <ion-card-header>
-            <img class="igm" src={{image}} srcset="" />
-            <ion-card-title style="text-align: center; font-weight:bold;">{{libelle}}</ion-card-title>
-            <ion-card-content style="text-align:center;"> {{description}} </ion-card-content>
+            <img class="igm" src="{{image}}" srcset="" />
+            <ion-card-title style="text-align: center; font-weight: bold"
+              >{{libelle}}</ion-card-title
+            >
+            <ion-card-content style="text-align: center">
+              {{description}}
+            </ion-card-content>
           </ion-card-header>
         </ion-card>
       </ion-col>
     </ion-row>
-  </div>
-  <div class="av">Partager votre idée ou avis ici</div>
 
-  <div class="" *ngFor="let ide of ide, let i=index">
+    <div class="" *ngFor="let ide of ide, let i=index">
+      <div class="card mt-2">
+        <div class="card-header">
+          <div class="d-flex justify-content-between">
+            <div>
+              <ion-avatar slot="start">
+                <img src="../../assets/images/avatar.png" class="imgae" />
+              </ion-avatar>
+            </div>
+            <div class="mm">
+              <ion-label>
+                <h3>{{ide.user.username}}</h3>
+                <p>Dec 10, 2019</p>
+              </ion-label>
+            </div>
+            <div>
+              <div class="dropdown">
+                <i
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  class="fa-solid fa-ellipsis"
+                  slot="start"
+                  slot="start"
+                ></i>
 
-    <div class="card">
-      <div class="tout">
-        <div class="first">
-          <ion-avatar slot="start">
-            <img src="../../assets/images/avatar.png" />
-          </ion-avatar>
+                <ul class="dropdown-menu">
+                  <li>
+                    <button class="dropdown-item" href="#">
+                      Modifier
+                      <i
+                        class="bi bi-pencil"
+                        style="color: rgb(98, 163, 85)"
+                      ></i>
+                    </button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item" href="#">
+                      Supprimer <i class="bi bi-trash3" style="color: red"></i>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-        
-        <div class="md">
-          <h3>{{ide.user.username}}</h3>
-          
-          <p>{{ide.contenu_idee}}</p>
-          
+        <div class="card-body">
+          <p class="card-text">{{ide.contenu_idee}}</p>
         </div>
-      <div class="pp">
-        <div class="dropdown">
-          <i type="button" data-bs-toggle="dropdown" aria-expanded="false" class="fa-solid fa-ellipsis"  slot="start" slot="start"></i>
-          
-          <ul class="dropdown-menu">
-            <li><button class="dropdown-item" href="#">Modifier <i class="bi bi-pencil" style="color: rgb(98, 163, 85);"></i> </button></li>
-            <li><button class="dropdown-item" href="#">Supprimer <i class="bi bi-trash3" style="color: red;"></i></button></li>
-          </ul>
+        <div class="card-footer text-muted">
+          <div class="d-flex justify-content-between">
+            <div>
+              <button>
+                <i class="bi bi-hand-thumbs-up-fill iconComment"></i>
+                <div class="textComment">{{jaime[i]}} J'aime</div>
+              </button>
+            </div>
+            <div>
+              <button>
+                <i class="bi bi-hand-thumbs-down-fill iconComment"></i>
+                <div class="textComment">{{jaime[i]}} J'aime pas</div>
+              </button>
+            </div>
+            <div>
+              <button>
+                <i class="bi bi-chat-left-dots-fill iconComment"></i>
+                <div class="textComment">2 Commentaire</div>
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-      </div>
-      <div class="d-flex justify-content-between align-items-center">
-        <div class="d-flex align-items-center">
-          <a href="#!" class="link-muted me-2"
-            ><i class="bi bi-hand-thumbs-up-fill"></i></a
-          >{{jaime[i]}}
-          <!-- <a href="#!" class="link-muted"
-            ><i class="bi bi-hand-thumbs-down-fill"></i></a
-          >{{jaimePas[i]}} -->
-        </div>
-        <a routerLink="/commentaire/{{ide.id_idee}}" class="link-muted ch"
-          ><i class="bi bi-chat-dots"></i
-        ></a>
       </div>
     </div>
-
-    
-
-
   </div>
 </ion-content>
 <ion-footer>
@@ -79,7 +115,9 @@
     <ion-buttons slot="start">
       <ion-input placeholder="Votre message" [(ngModel)]="cont"></ion-input>
       <ion-buttons slot="end">
-        <ion-button (click)="onSubmit()"> Envoyer </ion-button>
+        <ion-button (click)="onSubmit()">
+          <i class="bi bi-send"></i>
+        </ion-button>
       </ion-buttons>
     </ion-buttons>
   </ion-toolbar>

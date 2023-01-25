@@ -45,12 +45,12 @@ const routes: Routes = [
     loadChildren: () => import('./vocal/vocal.module').then( m => m.VocalPageModule)
   },
   {
-    path: 'mot-de-passe-oublie',
-    loadChildren: () => import('./mot-de-passe-oublie/mot-de-passe-oublie.module').then( m => m.MotDePasseOubliePageModule)
-  },
-  {
     path: 'password-update',
     loadChildren: () => import('./password-update/password-update.module').then( m => m.PasswordUpdatePageModule)
+  },
+  {
+    path: 'password-forget',
+    loadChildren: () => import('./password-forget/password-forget.module').then( m => m.PasswordForgetPageModule)
   },
   
 

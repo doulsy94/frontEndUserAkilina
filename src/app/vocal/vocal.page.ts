@@ -3,6 +3,9 @@ import { Directory, Filesystem } from '@capacitor/filesystem';
 import { VoiceRecorder, RecordingData } from 'capacitor-voice-recorder';
 import { GestureController } from '@ionic/angular';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { MinistereService } from '../_services/ministere.service';
 
 @Component({
   selector: 'app-vocal',
@@ -10,6 +13,10 @@ import { Haptics, ImpactStyle } from '@capacitor/haptics';
   styleUrls: ['./vocal.page.scss'],
 })
 export class VocalPage implements OnInit, AfterViewInit {
+  image: any;
+  libelle: any;
+  description: any;
+
   recording = false;
   storedFileNames :any= [];
   durationDisplay = '';
@@ -19,7 +26,7 @@ export class VocalPage implements OnInit, AfterViewInit {
  @ViewChild('recordbtn', { read: ElementRef })
   recordbtn!: ElementRef;
 
-  constructor(private gestureCtrl: GestureController) {}
+  constructor(private gestureCtrl: GestureController, private back: Location, private route: ActivatedRoute, private ministere: MinistereService) {}
 
   ngOnInit() {
     this.loadFiles();
@@ -123,5 +130,8 @@ async deleteRecording(fileName:string){
   this.loadFiles();
 }
 
+goBack(){
+  this.back.back()
+}
 
 }
