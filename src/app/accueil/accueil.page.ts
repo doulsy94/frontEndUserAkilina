@@ -152,7 +152,7 @@ this.usersService.listerUser().subscribe(data => {
 
   /********************** METHODE PERMETTANT DE SUPPRIMER UN MINISTERE  *****************/
   suprimerMinistere(id_ministere: any, id_user:any) {
-    this.ministereService.suprimerMinistere(id_ministere, id_user).subscribe({
+    this.ministereService.supprimerMinistere(id_ministere, id_user).subscribe({
       next: data => {
         console.log(data);
        this.alerte();

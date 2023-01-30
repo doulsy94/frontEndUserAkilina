@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -6,12 +6,20 @@ const AUTH_API = 'http://localhost:8080/api/idee';
 const AUTH_API1 = 'http://localhost:8080/api/jaime';
 const AUTH_API2 = 'http://localhost:8080/api/jaimepas';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable({
   providedIn: 'root'
 })
 export class IdeeService {
 
 constructor(private http: HttpClient) { }
+
+httpOptions={
+  headers:new HttpHeaders({'Content-Type':'application/json'})
+}
 
 //METHODE PERMETTANT DE LISTER UN MINISTERE
 listerIdee(): Observable<any>{
@@ -39,7 +47,7 @@ ajouterIdee(contenu: any, id_user: any, id_ministere: any): Observable<any> {
 
 
   const data = {
-    "contenu_idee": contenu
+    "contenu_idee": contenu,
   }
   return this.http.post(`${AUTH_API}/ajouter/${id_user}/${id_ministere}`, data);
 }
@@ -50,19 +58,22 @@ lireIdeeById(id_idee: any): Observable<any> {
   return this.http.get(`${AUTH_API}/lireParId/${id_idee}`);
 }
 
+
+
 //METHODE PERMETTANT DE MODIFIER UNE IDEE
 modifierIdee(id_idee: any, id_user: any, contenu: any): Observable<any> {
 
-  const data: FormData = new FormData();
-  const idee = [{
-    "contenu": contenu,
+  // const data: FormData = new FormData();
+  var idee = [{
+    "contenu_idee": contenu,
   }]
-  data.append('idee', JSON.stringify(idee).slice(1, JSON.stringify(idee).lastIndexOf(']')));
-  return this.http.put(`${AUTH_API}/modifier/${id_idee}/${id_user}`, data);
+  var data=JSON.stringify(idee).slice(1, JSON.stringify(idee).lastIndexOf(']'))
+  return this.http.post(`${AUTH_API}/modifier/${id_idee}/${id_user}`, data,this.httpOptions);
 }
 
+
  //SUPRIMER IDEE
- suprimerIdee(id_idee:any, id_user:any):Observable<any>{
+ supprimerIdee(id_idee:any, id_user:any):Observable<any>{
   return this.http.delete(`${AUTH_API}/supprimer/${id_idee}/${id_user}`);
 }
 
@@ -83,7 +94,7 @@ ajouterJaime(id_idee:any, id_user:any):Observable<any>{
 }
 
 //SUPRIMER JAIMES
-suprimerJaime(id:any, id_user:any):Observable<any>{
+supprimerJaime(id:any, id_user:any):Observable<any>{
   return this.http.delete(`${AUTH_API1}/supprimer/${id}/${id_user}`);
 }
 
@@ -115,7 +126,7 @@ ajouterJaimePas(id_idee:any, id_user:any):Observable<any>{
 }
 
 //SUPRIMER JAIMES
-suprimerJaimePas(id:any, id_user:any):Observable<any>{
+supprimerJaimePas(id:any, id_user:any):Observable<any>{
   return this.http.delete(`${AUTH_API2}/supprimer/${id}/${id_user}`);
 }
 

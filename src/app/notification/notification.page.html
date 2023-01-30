@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title slot="start">Notifications </ion-title>
+  <ion-toolbar style="--background:#24A8F2;">
+    <ion-title size="" style="color: white; text-align: center;" >Notification</ion-title>
     <ion-buttons >
       
     </ion-buttons>
@@ -8,26 +8,18 @@
 </ion-header>
 
 <ion-content>
-  <ion-list lines="full">
-    <ion-item>
+  <ion-list lines="full" *ngFor="let notif of notif">
+    <ion-item >
       <ion-avatar slot="start">
-        <ion-img src="https://i.pravatar.cc/300?u=b"></ion-img>
+        <ion-img src={{imagecreateur}}></ion-img>
       </ion-avatar>
+      
       <ion-label class="ion-text-wrap">
-        <p style="color: black;"> <span style="font-weight: 600;"> Abass Maiga </span> vient de faire 
-          une publication dans le <span style="font-weight: 600;">Ministère de l'education nationale</span></p>
-      </ion-label>
-    </ion-item>
-
-    <ion-item>
-      <ion-avatar slot="start">
-        <ion-img src="https://i.pravatar.cc/300?u=b"></ion-img>
-      </ion-avatar>
-      <ion-label class="ion-text-wrap">
-        <p style="color: black;"> <span style="font-weight: 600;"> Abdoulaye Sy </span> vient de faire 
-          une publication dans le <span style="font-weight: 600;">Ministère de l'enseignément supérieur et de la recherche scientifique</span></p>
-     
-      </ion-label>
+        <p style="color: black;"> <span style="font-weight: 600;"> {{notif.createur}} </span> vient de faire 
+          une publication dans le <span style="font-weight: 600;">{{notif.ministere}}</span></p>
+          <p>{{ notif.datenotif  | date: 'dd/MM/yyyy HH:mm:ss' }}</p>
+      </ion-label>  
+      
     </ion-item>
   </ion-list>
 </ion-content>

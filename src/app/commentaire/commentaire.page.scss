@@ -1,86 +1,4 @@
 
-// ion-content{
-//     position: relative;
-// }
-
-// ion-footer ion-toolbar{
-//     --background: #f4f4f4;
-// }
-// ion-footer ion-button {
-//     font-weight: 600;
-// }
-
-// ion-input{
-//     background: white !important;
-//     height: 31px;
-//     width: 95%;
-//     margin-left: 2.5%;
-//     margin-right: 2.5%;
-//     border-radius: 4px;
-//     border: 1px #dfdfdf solid;
-//     --padding-start: 8px ;
-// }
-
-// ion-avatar{
-//     height: 45px;
-//     width: 45px;
-// }
-// h3{
-//     font-weight: 700;
-//     font-size: 15px;
-//     margin-top: 10px;
-//     margin-left: 7px;
-// }
-// .flex_box{
-//     display: flex;
-//     justify-content: space-between;
-// }
-// ion-note{
-//     font-size: 13px;
-// }
-// .text-icon{
-//     font-size: 22px;
-//     margin-bottom: -6px;
-// }
-// p{
-//     color: gray;
-// }
-// ::before {
-//     margin-left: 35px;;
-// }
-
-// .av {
-//     margin-bottom: 10px;
-//     text-align: center;
-//     font-weight: 900;
-// }
-// // .deux {
-// //     display: flex;
-// //     flex-direction: row;
-// //     justify-content: space-between;
-// // }
-
-// ion-buttons.buttons-first-slot.sc-ion-buttons-ios-h.sc-ion-buttons-ios-s.ios.hydrated {
-//     margin-bottom: 12px;
-// }
-// ion-item{
-//     display: block;
-// }
-
-// .tout{
-//     display: grid;
-//     grid-template-columns: 20% 60% 10%;
-//     margin-bottom: 10px;
-// }
-// p{
-// font-size: 12px;
-// }
-
-// .card {
-//     margin-bottom: 3%;
-// }
-
-
 .social-cards ion-col {
     padding: 0;
   }
@@ -106,6 +24,16 @@ ul{
  ion-buttons.buttons-last-slot.sc-ion-buttons-md-h.sc-ion-buttons-md-s.md.hydrated {
     margin-left: 26px;
 }
+.sc-ion-buttons-ios-h {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    z-index: 99;
+    margin-left: 10px;
+}
 .nav{
     position: fixed;
 }
@@ -115,12 +43,48 @@ ul{
     height: 40px;
 }
 
+.textComment{
+    font-size: 10px;
+    text-align: justify;
+}
+.iconComment{
+    font-size: 12px;
+}
 .card-header{
+    height: 55px !important;
+    background-color: white;
+}
+
+.card-footer{
     height: 50px !important;
     background-color: white;
 }
 
 .mm {
-    margin-left: -42%;
+    margin-left: -38%;
+    margin-top: 3px;
 }
 
+.mod{
+    margin-top: 60%;
+}
+
+.butna{
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #f22b24;
+    color: white; 
+    border-radius: 11PX;
+    height: 35px; 
+}
+
+.butn{
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #24A8F2;
+    color: white; 
+    border-radius: 11PX;
+    height: 35px; 
+}

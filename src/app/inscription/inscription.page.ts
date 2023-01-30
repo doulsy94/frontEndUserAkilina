@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-inscription',
@@ -38,6 +39,7 @@ export class InscriptionPage implements OnInit {
         console.log(data);
       this.isSuccessful = true;
       this.isSignUpFailed = false; 
+      this.popUp();
       },
       err => {
         this.errorMessage = err.error.message;
@@ -48,5 +50,28 @@ export class InscriptionPage implements OnInit {
 
   reloadPage(): void {
   window.location.reload();
+  }
+
+  popUp() {
+    Swal.fire({
+      position:'center',
+  
+      text: 'Compte creer avec success!!',
+      icon:'success',
+      heightAuto: false,
+      showConfirmButton: true,
+      confirmButtonText: "OK",
+      confirmButtonColor: '#0857b5',
+      showDenyButton: false,
+      showCancelButton: false,
+      allowOutsideClick: false
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigateByUrl('/connexion', {skipLocationChange: true}).then(() => {
+          this.router.navigate(["/connexion"])
+        })
+      }
+    })
+
   }
 }

@@ -52,6 +52,10 @@ const routes: Routes = [
     path: 'password-forget',
     loadChildren: () => import('./password-forget/password-forget.module').then( m => m.PasswordForgetPageModule)
   },
+  {
+    path: 'slider',
+    loadChildren: () => import('./slider/slider.module').then( m => m.SliderPageModule)
+  },
   
 
 ];

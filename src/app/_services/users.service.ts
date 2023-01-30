@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -11,6 +11,10 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
+  httpOptions={
+    headers:new HttpHeaders({'Content-Type':'application/json'})
+  }
+
     //METHODE PERMETTANT DE LISTER LES UTILISATEURS
   listerUser(): Observable<any>{
   return this.http.get(`${AUTH_API}/lire`);
@@ -22,9 +26,31 @@ nombreUsers(): Observable<any> {
   return this.http.get(`${AUTH_API}/afficher_user_nombre`);
 }
 
- //SUPRIMER MINISTERE
- suprimerUsers(id_user:any):Observable<any>{
+ //SUPRIMER USER
+ supprimerUsers(id_user:any):Observable<any>{
   return this.http.delete(`${AUTH_API}/supprimer/${id_user}`);
 }
+
+//METHODE PERMETTANT DE LISTER UN UTILISATEUR PAR ID
+listerUserParId(id_user:any): Observable<any>{
+  return this.http.get(`${AUTH_API}/lireParId/${id_user}`);
+}
+
+//METHODE PERMETTANT DE MODIFIER UN UTILISATEUR PAR ID
+modifierUserParId(id_user:any,user:any): Observable<any>{
+  // const data: FormData = new FormData();
+  // const region = [{
+  //   "username": username,
+  //   "email": email,
+  //   "addresse": addresse,
+  //   "numzeo": numero
+  // }]
+ 
+  // data.append('user', JSON.stringify(user).slice(1, JSON.stringify(user).lastIndexOf(']')));
+
+  return this.http.post(`${AUTH_API}/modifieruser/${id_user}`,user);
+}
+
+
 
 }

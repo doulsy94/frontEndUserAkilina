@@ -6,6 +6,7 @@ import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MinistereService } from '../_services/ministere.service';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-vocal',
@@ -15,8 +16,9 @@ import { MinistereService } from '../_services/ministere.service';
 export class VocalPage implements OnInit, AfterViewInit {
   image: any;
   libelle: any;
+  id_user: any
   description: any;
-
+  idminister: any
   recording = false;
   storedFileNames :any= [];
   durationDisplay = '';
@@ -26,9 +28,16 @@ export class VocalPage implements OnInit, AfterViewInit {
  @ViewChild('recordbtn', { read: ElementRef })
   recordbtn!: ElementRef;
 
-  constructor(private gestureCtrl: GestureController, private back: Location, private route: ActivatedRoute, private ministere: MinistereService) {}
+  constructor(private storageService: TokenStorageService, private gestureCtrl: GestureController, private back: Location, private route: ActivatedRoute, private ministere: MinistereService) {}
 
   ngOnInit() {
+    
+
+    this.id_user=this.storageService.getUser().id_user;
+    this.idminister = this.route.snapshot.params['id'];
+    console.log("ministere  "+this.idminister)
+    console.log("utilisateur "+this.id_user)
+
     this.loadFiles();
      VoiceRecorder.requestAudioRecordingPermission();
   }
@@ -75,7 +84,7 @@ async loadFiles(){
   }).then(result => {
     console.log(result);
     this.storedFileNames = result.files;
-
+    console.log("chemin du fichier tyuio "+this.storedFileNames)
     console.log("chemin du fichier "+this.storedFileNames.name)
   });
 }

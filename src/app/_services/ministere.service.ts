@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -12,6 +12,10 @@ const AUTH_API = 'http://localhost:8080/api/ministere';
 export class MinistereService {
 
   constructor(private http: HttpClient) { }
+
+  httpOptions={
+    headers:new HttpHeaders({'Content-Type':'application/json'})
+  }
 
   //METHODE PERMETTANT DE LISTER UN MINISTERE
   listerMinistere(): Observable<any> {
@@ -65,7 +69,7 @@ export class MinistereService {
   }
 
    //SUPRIMER MINISTERE
-   suprimerMinistere(id_ministere:any, id_user:any):Observable<any>{
+   supprimerMinistere(id_ministere:any, id_user:any):Observable<any>{
     return this.http.delete(`${AUTH_API}/supprimer/${id_ministere}/${id_user}`);
   }
 

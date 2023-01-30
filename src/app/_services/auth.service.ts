@@ -24,7 +24,8 @@ export class AuthService {
     }, httpOptions);
   }
 
-  register(username: string, email: string, addresse: string, numero: string, password: string, confirmPassword: string): Observable<any> {
+  register(username: string, email: string, numero: string,  addresse: string, password: string, confirmPassword: string): Observable<any> {
+   
     return this.http.post(AUTH_API + 'signup', {
       username,
       email,
@@ -40,4 +41,11 @@ export class AuthService {
     this.router.navigateByUrl('connexion')
     window.location.reload();
   }
+
+  modifierImageUser(id_user: any, imageuser:any): Observable<any>{
+
+    return this.http.post(`${AUTH_API}/photo/upload/${id_user}`,imageuser)
+   
+  }
+
 }

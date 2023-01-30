@@ -1,12 +1,12 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar style="--background:#24A8F2;">
     <ion-buttons slot="start">
-      <ion-back-button
+      <ion-back-button style="color: white;"
         defaultHref="accueil"
         (click)="goBack()"
       ></ion-back-button>
     </ion-buttons>
-    <ion-title>Ministere</ion-title>
+    <ion-title size="" style="color: white;" >Ministere</ion-title>
   </ion-toolbar>
 </ion-header>
 <div class="sticky-top">
@@ -23,7 +23,9 @@
       <ion-col>
         <ion-card class="crd">
           <ion-card-header>
-            <img class="igm" src="{{image}}" srcset="" />
+            <div class="igm">
+            <img src={{image}} srcset="" />
+          </div>
             <ion-card-title style="text-align: center; font-weight: bold"
               >{{libelle}}</ion-card-title
             >
@@ -41,17 +43,17 @@
           <div class="d-flex justify-content-between">
             <div>
               <ion-avatar slot="start">
-                <img src="../../assets/images/avatar.png" class="imgae" />
+                <img src={{ide.user.imageuser}} class="imgae" />
               </ion-avatar>
             </div>
             <div class="mm">
               <ion-label>
                 <h3>{{ide.user.username}}</h3>
-                <p>Dec 10, 2019</p>
+                <p>{{ide.date | date: 'dd/MM/yyyy HH:mm:ss' }}</p>
               </ion-label>
             </div>
             <div>
-              <div class="dropdown">
+              <div class="dropdown" *ngIf="ide.user.id_user == id_user">
                 <i
                   type="button"
                   data-bs-toggle="dropdown"
@@ -63,7 +65,7 @@
 
                 <ul class="dropdown-menu">
                   <li>
-                    <button class="dropdown-item" href="#">
+                    <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="lireidee(ide.id_idee)">
                       Modifier
                       <i
                         class="bi bi-pencil"
@@ -72,7 +74,7 @@
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item" href="#">
+                    <button class="dropdown-item" (click)="supprimer(ide.id_idee)" href="#">
                       Supprimer <i class="bi bi-trash3" style="color: red"></i>
                     </button>
                   </li>
@@ -100,7 +102,7 @@
             </div>
             <div>
               <button>
-                <i class="bi bi-chat-left-dots-fill iconComment"></i>
+                <a routerLink="/commentaire/{{ide.id_idee}}"><i class="bi bi-chat-left-dots-fill iconComment"></i></a>
                 <div class="textComment">2 Commentaire</div>
               </button>
             </div>
@@ -122,3 +124,21 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-footer>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog mod">
+    <div class="modal-content">
+      <form #update = "ngForm" (ngSubmit)="modifierPopup(id,update.value.contenu)">
+      <div class="form-group">
+        <input  ngModel="{{ideee}}" class="form-control" name="contenu" id="contenu">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class=" butna " data-bs-dismiss="modal">Annuler</button>
+        <button type="submit" class=" butn" >Actualiser</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
