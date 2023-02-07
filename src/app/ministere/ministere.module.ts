@@ -9,12 +9,7 @@ import { MinisterePageRoutingModule } from './ministere-routing.module';
 import { MinisterePage } from './ministere.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    MinisterePageRoutingModule
-  ],
-  declarations: [MinisterePage]
+  imports: [CommonModule, FormsModule, IonicModule, MinisterePageRoutingModule],
+  declarations: [MinisterePage],
 })
 export class MinisterePageModule {}

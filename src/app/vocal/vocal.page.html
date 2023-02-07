@@ -1,8 +1,12 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Vocal </ion-title>
+  <ion-toolbar style="--background: #24a8f2">
+    <ion-title size="" style="color: white">Vocal</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="ministere"></ion-back-button>
+      <ion-back-button
+        text=""
+        style="color: white"
+        (click)="goBack()"
+      ></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -19,7 +23,7 @@
   <div>
     <ion-row>
       <ion-col>
-        <ion-card class="crd">
+        <ion-card class="">
           <ion-card-header>
             <img class="igm" src="{{image}}" srcset="" />
             <ion-card-title style="text-align: center; font-weight: bold"
@@ -30,42 +34,43 @@
             </ion-card-content>
           </ion-card-header>
         </ion-card>
-    
       </ion-col>
-  
     </ion-row>
-
-    <div
-      class="card"
-      button
-      *ngFor="let f of storedFileNames"
-      (click)="playFile(f.name)"
-      detail="false"
-    >
+    <ion-card class="crd" *ngFor="let v of voc">
       <div class="tout">
         <div class="first">
           <ion-avatar slot="start">
-            <img src="../../assets/images/avatar.png" />
+            <img src="{{v.user.imageuser}}" class="imgae" />
           </ion-avatar>
+          <ion-icon
+            *ngIf="v.user.id_user == id_user"
+            style="
+              position: relative;
+              top: -50%;
+              left: 210px;
+              font-size: 2em !important;
+              color: red;
+            "
+            name="trash-outline"
+            slot="icon-only"
+            (click)="supprimer(v.id)"
+          ></ion-icon>
         </div>
 
-        <div class="md">
-          <h3>Abdoulaye Sy</h3>
+        <h3>{{v.user.username}}</h3>
 
-          <ion-item>
-            {{f.name}}
-            <ion-button
-              slot="end"
-              (click)="deleteRecording(f.name)"
-              fill="clear"
-              color="danger"
-            >
-              <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
-            </ion-button>
-          </ion-item>
-        </div>
+        <audio controls src="{{v.fileName}}" style="margin-top: -50%">
+          <a href="{{v.fileName}}"> Download audio </a>
+        </audio>
+        <ion-button
+          slot="end"
+          (click)="deleteRecording(v.name)"
+          fill="clear"
+          color="danger"
+        >
+        </ion-button>
       </div>
-    </div>
+    </ion-card>
   </div>
 </ion-content>
 
@@ -75,13 +80,18 @@
       class="ion-align-items-center"
       style="margin-right: 20px; margin-left: 20px"
     >
-      <ion-col size="10">
-        <span *ngIf="!recording"> Appuyez et maintenez pour enregistrer </span>
+      <ion-col size="8">
+        <span *ngIf="!recording" style="font-size: 0.8em">
+          Appuyez et maintenez pour enregistrer
+        </span>
         <span *ngIf="recording"> {{durationDisplay}} </span>
       </ion-col>
-      <ion-col size="2" fill="clear" #recordbtn style="padding-right: 30px">
-        <ion-button style="margin-right: 100px">
+      <ion-col size="4" fill="clear" #recordbtn style="display: flex">
+        <ion-button style="font-size: 0.7em">
           <ion-icon name="mic-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button (click)="ajouter()" style="font-size: 0.7em">
+          <i class="bi bi-send"></i>
         </ion-button>
       </ion-col>
     </ion-row>

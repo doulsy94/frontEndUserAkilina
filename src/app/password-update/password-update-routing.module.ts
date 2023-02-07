@@ -6,8 +6,8 @@ import { PasswordUpdatePage } from './password-update.page';
 const routes: Routes = [
   {
     path: '',
-    component: PasswordUpdatePage
-  }
+    component: PasswordUpdatePage,
+  },
 ];
 
 @NgModule({

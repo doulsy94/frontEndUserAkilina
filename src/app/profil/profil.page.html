@@ -1,6 +1,8 @@
 <ion-header>
-  <ion-toolbar style="--background:#24A8F2;">  
-    <ion-title size="" style="color: white; text-align: center;" >Profil</ion-title>
+  <ion-toolbar style="--background: #24a8f2">
+    <ion-title size="" style="color: white; text-align: center"
+      >Profil</ion-title
+    >
   </ion-toolbar>
 </ion-header>
 
@@ -9,13 +11,18 @@
     <section class="profile">
       <div class="p-content">
         <div class="image">
-          <img
-            src={{imageuser}}
-            alt="Profile"
-          />
-          <label for="imageuser"><ion-badge><ion-icon name="camera"></ion-icon></ion-badge></label>
+          <img src="{{imageuser}}" alt="Profile" />
+          <label for="imageuser"
+            ><ion-badge><ion-icon name="camera"></ion-icon></ion-badge
+          ></label>
           <!-- <label for="imageuser"><button><ion-badge><i class="bi bi-save" style="color:green"></i></ion-badge></button></label> -->
-          <input (click)= "modifierImageUser(id_user)" id="imageuser" type="file" name="imageuser" style="visibility: hidden;" >
+          <input
+            (change)="recuperationImageUser($event)"
+            id="imageuser"
+            type="file"
+            name="imageuser"
+            style="visibility: hidden"
+          />
         </div>
         <div class="names">
           <div class="name">{{username}}</div>
@@ -25,12 +32,14 @@
     <section class="settings">
       <div class="setting">
         <div class="btnn">
-          <ion-button fill="clear" routerLink="/password-update"
+          <ion-button fill="clear" routerLink="/password-update/{{id_user}}"
             >Modifier mot de passe</ion-button
           >
         </div>
         <div class="s-title">
-          <h4 style="text-align: center">Information du compte</h4>
+          <h5 style="text-align: center; font-weight: 600">
+            Information du compte
+          </h5>
         </div>
         <div class="s-content">
           <div class="set">
@@ -58,7 +67,7 @@
       </div>
       <div class="setting app">
         <div class="s-title">
-          <h4>Parametre de l'application</h4>
+          <h4 style="font-size: large">Parametre de l'application</h4>
         </div>
         <div class="s-content">
           <div class="set">

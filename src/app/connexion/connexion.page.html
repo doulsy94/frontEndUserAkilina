@@ -1,6 +1,8 @@
 <ion-header>
-  <ion-toolbar  style="--background:#24A8F2;">
-    <ion-title size="" style="color: white; text-align: center;" >Connexion</ion-title>
+  <ion-toolbar style="--background: #24a8f2">
+    <ion-title size="" style="color: white; text-align: center"
+      >Connexion</ion-title
+    >
   </ion-toolbar>
 </ion-header>
 
@@ -8,111 +10,108 @@
   <div class="" style="width: 98%; margin-left: auto; margin-right: auto">
     <div class="container">
       <form
-     
-      name="form"
-      (ngSubmit)="f.form.valid && onSubmit()"
-      #f="ngForm"
-      novalidate
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
       >
-      <div class="row">
-        <div class="col-12">
-          <div class="text-center">
-            <img src="../../assets/images/logoakilina.png" alt="logo" />
-          
+        <div class="row">
+          <div class="col-12">
+            <div class="text-center">
+              <img src="../../assets/images/logoakilina.png" alt="logo" />
+            </div>
           </div>
-        </div>
-        <div class="col-12">
-          <div class="form-group">
-            <label><ion-icon name="person-circle-outline"></ion-icon> EMAIL OU NUMERO</label>
-            <input
-            type="text"
-            class="form-control in"
-            name="emailOrNumero"
-            [(ngModel)]="form.emailOrNumero"
-            required
-            #emailOrNumero="ngModel"
-              placeholder="Email ou Numero"
-            />
-            <div
-            class="alert alert-danger"
-            role="alert"
-            *ngIf="emailOrNumero.errors && f.submitted"
-          >
-            Email ou Numero est obligatoire!
-          </div>
-          </div>
-          <div class="form-group">
-           
-            <label><ion-icon name="lock-closed-outline"></ion-icon> MOT DE PASSE</label>
-            <input
-            type="password"
-            class="form-control in"
-            name="password"
-            [(ngModel)]="form.password"
-            required
-            minlength="6"
-            #password="ngModel"
-              placeholder="Mot de Passe"
-            />
-         
-          </div>
-          <div
-          class="alert alert-danger"
-          role="alert"
-          *ngIf="password.errors && f.submitted"
-        >
-          <div *ngIf="password.errors['required']">Mot de passe est obligatoire</div>
-          <div *ngIf="password.errors['minlength']">
-              Le mot de passe doit avoir au moins 6 caractères
-          </div>
-        </div>
-          <p class="ins">
-            <span style="color: #ffff">
-              <a routerLink="/reset">Mot de Passe oublié ?</a>
-            </span>
-          </p>
-          <div class="form-group form-check">
-            <input
-              type="checkbox"
-              class="form-check-input ch"
-              id="exampleCheck1"
-            /> <p>Se souvenir de moi</p>
-         
-          </div>
-
-          <div class="text-center">
-            <button
-              type="submit"
-              value=""
-              class="connexion"
-              
-            >
-              Se connecter
-            </button>
-          </div>
-          <div class="form-group">
+          <div class="col-12">
+            <div class="form-group">
+              <label
+                ><ion-icon name="person-circle-outline"></ion-icon> EMAIL OU
+                NUMERO</label
+              >
+              <input
+                type="text"
+                class="form-control in"
+                name="emailOrNumero"
+                [(ngModel)]="form.emailOrNumero"
+                required
+                #emailOrNumero="ngModel"
+                placeholder="Email ou Numero"
+              />
+              <div
+                class="alert alert-danger"
+                role="alert"
+                *ngIf="emailOrNumero.errors && f.submitted"
+              >
+                Email ou Numero est obligatoire!
+              </div>
+            </div>
+            <div class="form-group">
+              <label
+                ><ion-icon name="lock-closed-outline"></ion-icon> MOT DE
+                PASSE</label
+              >
+              <input
+                type="password"
+                class="form-control in"
+                name="password"
+                [(ngModel)]="form.password"
+                required
+                minlength="6"
+                #password="ngModel"
+                placeholder="Mot de Passe"
+              />
+            </div>
             <div
               class="alert alert-danger"
               role="alert"
-              *ngIf="f.submitted && isLoginFailed"
+              *ngIf="password.errors && f.submitted"
             >
-              Connexion échouer
+              <div *ngIf="password.errors['required']">
+                Mot de passe est obligatoire
+              </div>
+              <div *ngIf="password.errors['minlength']">
+                Le mot de passe doit avoir au moins 6 caractères
+              </div>
             </div>
+            <p class="ins">
+              <span style="color: #ffff">
+                <a routerLink="/resetpassword">Mot de passe oublié ?</a>
+              </span>
+            </p>
+            <div class="form-group form-check">
+              <input
+                type="checkbox"
+                class="form-check-input ch"
+                id="exampleCheck1"
+              />
+              <p>Se souvenir de moi</p>
+            </div>
+
+            <div class="text-center">
+              <button type="submit" value="" class="connexion">
+                Se connecter
+              </button>
+            </div>
+            <div class="form-group">
+              <div
+                class="alert alert-danger"
+                role="alert"
+                *ngIf="f.submitted && isLoginFailed"
+              >
+                Connexion échouer
+              </div>
+            </div>
+            <p class="ins">
+              Vous n'avez pas de compte?
+              <span style="color: #ffff">
+                <a routerLink="/inscription">Incrivez-vous ici</a>
+              </span>
+            </p>
           </div>
-          <p class="ins">
-            Vous n'avez pas de compte?
-            <span style="color: #ffff">
-              <a routerLink="/inscription">Incrivez-vous ici</a>
-            </span>
-          </p>
         </div>
-      </div>
       </form>
     </div>
   </div>
-  <p class="txtAuth">
-    Ou conectez-vous avec
-  </p>
+  <p class="txtAuth">Ou conectez-vous avec</p>
 
   <div class="iconss">
     <i class="bi bi-facebook"></i>

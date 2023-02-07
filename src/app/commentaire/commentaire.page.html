@@ -1,8 +1,13 @@
 <ion-header>
-  <ion-toolbar style="--background:#24A8F2;">
-    <ion-title style="color: white;" >Commentaire</ion-title>
-    <ion-buttons slot="start" style="color: white;">
-      <ion-back-button defaultHref="ministere" (click)="goBack()"></ion-back-button>
+  <ion-toolbar style="--background: #24a8f2">
+    <ion-title style="color: white">Commentaire</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button
+        text=""
+        style="color: white"
+        defaultHref="ministere"
+        (click)="goBack()"
+      ></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -12,11 +17,9 @@
     <ion-row>
       <ion-col>
         <ion-card class="crd">
-
-            <ion-card-content style="text-align: center">
-              {{contenu_ide}}
-            </ion-card-content>
-      
+          <ion-card-content style="text-align: center">
+            {{contenu_ide}}
+          </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
@@ -27,7 +30,7 @@
           <div class="d-flex justify-content-between">
             <div>
               <ion-avatar slot="start">
-                <img src={{comment.user.imageuser}} class="imgae" />
+                <img src="{{comment.user.imageuser}}" class="imgae" />
               </ion-avatar>
             </div>
             <div class="mm">
@@ -48,7 +51,12 @@
 
                 <ul class="dropdown-menu">
                   <li>
-                    <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="lirecomment(comment.id_commentaire)">
+                    <button
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      (click)="lirecomment(comment.id_commentaire)"
+                    >
                       Modifier
                       <i
                         class="bi bi-pencil"
@@ -57,7 +65,11 @@
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item" href="#" (click)="supprimer(comment.id_commentaire)">
+                    <button
+                      class="dropdown-item"
+                      href="#"
+                      (click)="supprimer(comment.id_commentaire)"
+                    >
                       Supprimer <i class="bi bi-trash3" style="color: red"></i>
                     </button>
                   </li>
@@ -86,18 +98,34 @@
 </ion-footer>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog mod">
     <div class="modal-content">
-      <form #update = "ngForm" (ngSubmit)="modifierPopup(id,update.value.contenu)">
-      <div class="form-group">
-        <input  ngModel="{{comm}}" class="form-control" name="contenu" id="contenu">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class=" butna " data-bs-dismiss="modal">Annuler</button>
-        <button type="submit" class=" butn" >Actualiser</button>
-      </div>
-    </form>
+      <form
+        #update="ngForm"
+        (ngSubmit)="modifierPopup(id,update.value.contenu)"
+      >
+        <div class="form-group">
+          <input
+            ngModel="{{comm}}"
+            class="form-control"
+            name="contenu"
+            id="contenu"
+          />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="butna" data-bs-dismiss="modal">
+            Annuler
+          </button>
+          <button type="submit" class="butn">Actualiser</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

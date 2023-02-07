@@ -13,8 +13,8 @@ import { InscriptionPage } from './inscription.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    InscriptionPageRoutingModule
+    InscriptionPageRoutingModule,
   ],
-  declarations: [InscriptionPage]
+  declarations: [InscriptionPage],
 })
 export class InscriptionPageModule {}

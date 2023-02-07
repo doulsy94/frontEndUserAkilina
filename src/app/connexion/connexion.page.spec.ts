@@ -9,8 +9,8 @@ describe('ConnexionPage', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConnexionPage ],
-      imports: [IonicModule.forRoot()]
+      declarations: [ConnexionPage],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ConnexionPage);

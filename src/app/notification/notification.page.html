@@ -1,25 +1,28 @@
 <ion-header>
-  <ion-toolbar style="--background:#24A8F2;">
-    <ion-title size="" style="color: white; text-align: center;" >Notification</ion-title>
-    <ion-buttons >
-      
-    </ion-buttons>
+  <ion-toolbar style="--background: #24a8f2">
+    <ion-title size="" style="color: white; text-align: center"
+      >Notification</ion-title
+    >
+    <ion-buttons> </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list lines="full" *ngFor="let notif of notif">
-    <ion-item >
+  <ion-list lines="full" *ngFor="let notif1 of notif">
+    <ion-item>
       <ion-avatar slot="start">
-        <ion-img src={{imagecreateur}}></ion-img>
+        <!-- <ion-img src="{{imagecreateur}}"></ion-img> -->
+        <img src="{{notif1.imagecreateur}}" alt="" srcset="" />
       </ion-avatar>
-      
+
       <ion-label class="ion-text-wrap">
-        <p style="color: black;"> <span style="font-weight: 600;"> {{notif.createur}} </span> vient de faire 
-          une publication dans le <span style="font-weight: 600;">{{notif.ministere}}</span></p>
-          <p>{{ notif.datenotif  | date: 'dd/MM/yyyy HH:mm:ss' }}</p>
-      </ion-label>  
-      
+        <p style="color: black">
+          <span style="font-weight: 600"> {{notif1.createur}} </span> vient de
+          faire une publication dans le
+          <span style="font-weight: 600">{{notif1.ministere}}</span>
+        </p>
+        <p>{{ notif1.datenotif | date: 'dd/MM/yyyy HH:mm:ss' }}</p>
+      </ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

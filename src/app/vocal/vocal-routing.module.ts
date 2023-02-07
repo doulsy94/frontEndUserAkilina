@@ -6,8 +6,8 @@ import { VocalPage } from './vocal.page';
 const routes: Routes = [
   {
     path: '',
-    component: VocalPage
-  }
+    component: VocalPage,
+  },
 ];
 
 @NgModule({

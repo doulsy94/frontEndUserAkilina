@@ -9,12 +9,7 @@ import { VocalPageRoutingModule } from './vocal-routing.module';
 import { VocalPage } from './vocal.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    VocalPageRoutingModule
-  ],
-  declarations: [VocalPage]
+  imports: [CommonModule, FormsModule, IonicModule, VocalPageRoutingModule],
+  declarations: [VocalPage],
 })
 export class VocalPageModule {}

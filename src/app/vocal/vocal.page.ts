@@ -7,6 +7,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MinistereService } from '../_services/ministere.service';
 import { TokenStorageService } from '../_services/token-storage.service';
+import { Fichier } from '../model/fichier';
+import { VocalService } from '../_services/vocal.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-vocal',
@@ -24,20 +27,42 @@ export class VocalPage implements OnInit, AfterViewInit {
   durationDisplay = '';
   duration = 0;
   fileName:any;
-
+  vocal: any
+Vocal: any;
+idvocal:any
+voc:any
+  fichierVocal: any;
  @ViewChild('recordbtn', { read: ElementRef })
   recordbtn!: ElementRef;
+  file: any;
+  date: any;
+  
 
-  constructor(private storageService: TokenStorageService, private gestureCtrl: GestureController, private back: Location, private route: ActivatedRoute, private ministere: MinistereService) {}
+  constructor(private storageService: TokenStorageService, private gestureCtrl: GestureController, private back: Location, private route: ActivatedRoute, private ministere: MinistereService, private vocalService: VocalService) {}
 
   ngOnInit() {
-    
-
-    this.id_user=this.storageService.getUser().id_user;
+    this.id_user = this.storageService.getUser().id_user;
     this.idminister = this.route.snapshot.params['id'];
-    console.log("ministere  "+this.idminister)
-    console.log("utilisateur "+this.id_user)
 
+    this.idvocal = this.route.snapshot.params['id'];
+    console.log(this.idvocal);
+
+    this.vocalService.lireVocalParIdMinistere(this.idvocal).subscribe((data) => {
+      this.voc = data;
+
+      this.file = data;
+      this.date = data[0].date;
+      console.log(data[1].fileName);
+
+    });
+
+    this.ministere.lireMinistereById(this.idminister).subscribe((data) => {
+      this.libelle = data.libelle;
+      this.image = data.image;
+      this.description = data.description;
+      console.log(data);
+    });
+    
     this.loadFiles();
      VoiceRecorder.requestAudioRecordingPermission();
   }
@@ -82,10 +107,13 @@ async loadFiles(){
     path: '',
     directory: Directory.Data
   }).then(result => {
-    console.log(result);
+    console.log(result.files[0]);
+    
+    this.fichierVocal = result.files[0];
     this.storedFileNames = result.files;
     console.log("chemin du fichier tyuio "+this.storedFileNames)
-    console.log("chemin du fichier "+this.storedFileNames.name)
+    console.log("chemin du fichier "+this.fichierVocal[0])
+    
   });
 }
 
@@ -113,6 +141,9 @@ stopRecording (){
         directory: Directory.Data,
         data: recordData
       });
+      
+      this.Vocal=this.dataURLtoFile(`data:audio/aac;base64,${recordData}`,fileName)
+console.log(this.Vocal)
       this.loadFiles();
     }
   })
@@ -139,8 +170,86 @@ async deleteRecording(fileName:string){
   this.loadFiles();
 }
 
+// la classe qui convertit un fichier base64 en File
+dataURLtoFile(dataurl:any, filename:any) {
+
+  var arr = dataurl.split(','),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+
+  while(n--){
+      u8arr[n] = bstr.charCodeAt(n);
+  }
+
+  return new File([u8arr], filename, {type:mime});
+}
+
 goBack(){
   this.back.back()
 }
 
+ajouter(){
+  this.reloadPage();
+  console.log(this.Vocal);
+this.vocalService.ajouterVocal(this.id_user, this.idminister, this.Vocal).subscribe((data) => {
+ this.vocal = data.vocal;
+ console.log("vocalllllll"+data)
+
+});
 }
+
+reloadPage(): void {
+  window.location.reload();
+}
+
+supprimer(id: any) {
+  this.popUp(id);
+}
+
+popUp(id: any) {
+  Swal.fire({
+    position: 'center',
+
+    text: 'Voulez vous vraiment supprimer ?',
+    icon: 'warning',
+    heightAuto: false,
+    showConfirmButton: true,
+    confirmButtonText: 'Oui',
+    confirmButtonColor: '#0857b5',
+    showDenyButton: false,
+    showCancelButton: true,
+    cancelButtonText: 'Non',
+    allowOutsideClick: false,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.vocalService
+        .supprimerVocal(id, this.id_user)
+        .subscribe((data) => {
+          console.log('okkk');
+        });
+
+      Swal.fire({
+        position: 'center',
+
+        text: 'Vocal supprimer avec success!!',
+        icon: 'success',
+        heightAuto: false,
+        showConfirmButton: true,
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#0857b5',
+        showDenyButton: false,
+        showCancelButton: false,
+        allowOutsideClick: false,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.reloadPage();
+        }
+      });
+    }
+  });
+}
+}
+
+

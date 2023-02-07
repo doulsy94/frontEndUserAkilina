@@ -1,178 +1,200 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title size="" style="color: black; text-align: center;" >Inscription</ion-title>
+  <ion-toolbar style="--background: #24a8f2">
+    <ion-title size="" style="color: white; text-align: center"
+      >Inscription</ion-title
+    >
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="container">
     <form
-    *ngIf="!isSuccessful"
-    name="form"
-    (ngSubmit)="f.form.valid && onSubmit()"
-    #f="ngForm"
-    novalidate
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
     >
-    <div class="row">
-      <div class="col-12">
-        <div class="text-center">
-          <img src="../../assets/images/logoakilina.png" alt="logo" />
+      <div class="row">
+        <div class="col-12">
+          <div class="text-center">
+            <img src="../../assets/images/logoakilina.png" alt="logo" />
+          </div>
         </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label
+              ><ion-icon name="person-circle-outline"></ion-icon> NOM
+              D'UTILISATEUR</label
+            >
+            <input
+              type="text"
+              class="form-control in"
+              name="username"
+              placeholder="Abdoulaye Sy"
+              [(ngModel)]="form.username"
+              required
+              minlength="3"
+              maxlength="20"
+              #username="ngModel"
+            />
+            <div
+              class="alert-danger dan"
+              *ngIf="username.errors && f.submitted"
+            >
+              <div *ngIf="username.errors['required']">
+                Nom d'utilisateur est obligatoire
+              </div>
+              <div *ngIf="username.errors['minlength']">
+                Le nom d'utilisateur doit dépasser 3 caractères
+              </div>
+              <div *ngIf="username.errors['maxlength']">
+                Le nom d'utilisateur ne doit pas dépasser 20 caractères
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><ion-icon name="call-outline"></ion-icon> NUMERO</label>
+            <input
+              type="text"
+              class="form-control in"
+              name="numero"
+              [(ngModel)]="form.numero"
+              numero
+              #numero="ngModel"
+              placeholder="+223 ********"
+              required
+            />
+            <div class="alert-danger dan" *ngIf="numero.errors && f.submitted">
+              <div *ngIf="numero.errors">Numero est obligatoire</div>
+              <div *ngIf="numero.errors['numero']">
+                Veuillez entrer un numero de téléphone valide
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><ion-icon name="mail-outline"></ion-icon> EMAIL</label>
+            <input
+              type="email"
+              class="form-control in"
+              name="email"
+              [(ngModel)]="form.email"
+              email
+              #email="ngModel"
+              placeholder="**********@gmail.com"
+            />
+            <div class="alert-danger dan" *ngIf="email.errors && f.submitted">
+              <div *ngIf="email.errors['email']">
+                Veuillez entrer un email valide
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><ion-icon name="location-outline"></ion-icon> ADRESSE</label>
+            <input
+              type="text"
+              class="form-control in"
+              name="addresse"
+              [(ngModel)]="form.addresse"
+              addresse
+              #addresse="ngModel"
+              placeholder="Bamako, Mali"
+            />
+          </div>
+          <div class="form-group">
+            <label
+              ><ion-icon name="lock-closed-outline"></ion-icon> MOT DE
+              PASSE</label
+            >
+            <input
+              type="password"
+              class="form-control in"
+              name="password"
+              [(ngModel)]="form.password"
+              required
+              minlength="6"
+              #password="ngModel"
+              placeholder="*******"
+              required
+            />
+            <div
+              class="alert-danger dan"
+              *ngIf="password.errors && f.submitted"
+            >
+              <div *ngIf="password.errors['required']">
+                Mot de Passe obligatoire
+              </div>
+              <div *ngIf="password.errors['minlength']">
+                Le mot de passe doit avoir au moins 6 caractères
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label
+              ><ion-icon name="lock-closed-outline"></ion-icon> CONFIRMER MOT DE
+              PASSE</label
+            >
+            <input
+              type="password"
+              class="form-control in"
+              name="confirmPassword"
+              [(ngModel)]="form.confirmPassword"
+              required
+              minlength="6"
+              #confirmPassword="ngModel"
+              placeholder="*******"
+            />
+            <div
+              class="alert-danger dan"
+              *ngIf="confirmPassword.errors && f.submitted"
+            >
+              <div *ngIf="confirmPassword.errors['required']">
+                Mot de Passe obligatoire
+              </div>
+              <div *ngIf="confirmPassword.errors['minlength']">
+                Le mot de passe doit avoir au moins 6 caractères
+              </div>
+            </div>
+          </div>
 
-      </div>
-      <div class="col-12">
-        <div class="form-group">
-          <label><ion-icon name="person-circle-outline"></ion-icon> NOM D'UTILISATEUR</label>
-          <input 
-            type="text"
-            class="form-control in"
-            name="username"
-            placeholder="Abdoulaye Sy"
-          [(ngModel)]="form.username"
-          required
-          minlength="3"
-          maxlength="20"
-          #username="ngModel"
-          /> 
-          <div class="alert-danger dan" *ngIf="username.errors && f.submitted">
-            <div *ngIf="username.errors['required']">Nom d'utilisateur est obligatoire</div>
-            <div *ngIf="username.errors['minlength']">
-              Le nom d'utilisateur doit dépasser 3 caractères
-            </div>
-            <div *ngIf="username.errors['maxlength']">
-              Le nom d'utilisateur ne doit pas dépasser 20 caractères
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label><ion-icon name="call-outline"></ion-icon> NUMERO</label>
-          <input
-            type="text"
-            class="form-control in"
-            name="numero"
-            [(ngModel)]="form.numero"
-            numero
-            #numero="ngModel"
-            placeholder="+223 ********"
-            required
-          />
-          <div class="alert-danger dan" *ngIf="numero.errors && f.submitted">
-            <div *ngIf="numero.errors">Numero est obligatoire</div>
-            <div *ngIf="numero.errors['numero']">
-              Veuillez entrer un numero de téléphone valide
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label><ion-icon name="mail-outline"></ion-icon> EMAIL</label>
-          <input
-            type="email"
-            class="form-control in"
-            name="email"
-            [(ngModel)]="form.email"
-            email
-            #email="ngModel"
-            placeholder="**********@gmail.com"
-          />
-          <div class="alert-danger dan" *ngIf="email.errors && f.submitted">
-            <div *ngIf="email.errors['email']">
-              Veuillez entrer un email valide
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label><ion-icon name="location-outline"></ion-icon> ADRESSE</label>
-          <input
-            type="text"
-            class="form-control in"
-            name="addresse"
-            [(ngModel)]="form.addresse"
-            addresse
-            #addresse="ngModel"
-            placeholder="Bamako, Mali"
-          />
-        </div>
-        <div class="form-group">
-          <label><ion-icon name="lock-closed-outline"></ion-icon> MOT DE PASSE</label>
-          <input
-            type="password"
-            class="form-control in"
-            name="password"
-            [(ngModel)]="form.password"
-            required
-            minlength="6"
-            #password="ngModel"
-            placeholder="*******"
-            required
-          />
-          <div class="alert-danger dan" *ngIf="password.errors && f.submitted">
-            <div *ngIf="password.errors['required']">Mot de Passe obligatoire</div>
-            <div *ngIf="password.errors['minlength']">
-              Le mot de passe doit avoir au moins 6 caractères
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label><ion-icon name="lock-closed-outline"></ion-icon> CONFIRMER MOT DE PASSE</label>
-          <input
-            type="password"
-            class="form-control in"
-            name="confirmPassword"
-            [(ngModel)]="form.confirmPassword"
-            required
-            minlength="6"
-            #confirmPassword="ngModel"
-            placeholder="*******"
-          />
-          <div class="alert-danger dan" *ngIf="confirmPassword.errors && f.submitted">
-            <div *ngIf="confirmPassword.errors['required']">Mot de Passe obligatoire</div>
-            <div *ngIf="confirmPassword.errors['minlength']">
-              Le mot de passe doit avoir au moins 6 caractères
-            </div>
-          </div>
-        </div>
-        
-        <div class="form-group form-check" required>
-        <input
+          <div class="form-group form-check" required>
+            <input
               type="checkbox"
               class="form-check-input ch"
               id="exampleCheck1"
               required
             />
-        <p class="ins">
-          En continuant, vous acceptez les Conditions générales d’utilisation de
-          Akilina. <a href="">Lire notre Politique de confidentialité</a>.
-        </p>
-      </div>
-        <div class="form-group text-center">
-          <button
-            type="submit"
-            value=""
-            class="inscription"
-           
+            <p class="ins">
+              En continuant, vous acceptez les Conditions générales
+              d’utilisation de Akilina.
+              <a href="">Lire notre Politique de confidentialité</a>.
+            </p>
+          </div>
+          <div class="form-group text-center">
+            <button type="submit" value="" class="inscription">
+              S'inscrire
+            </button>
+          </div>
+          <div
+            class="alert alert-warning"
+            *ngIf="f.submitted && isSignUpFailed"
           >
-            S'inscrire
-          </button>
+            Inscription échouer!<br />
+          </div>
+          <p class="ins">
+            Vous avez un compte?
+            <span style="color: #ffff">
+              <a routerLink="/connexion">Connectez-vous</a>
+            </span>
+          </p>
         </div>
-        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-          Inscription échouer!<br />{{ errorMessage }}
-        </div>
-        <p class="ins">
-          Vous avez un compte?
-          <span style="color: #ffff">
-            <a routerLink="/connexion">Connectez-vous</a>
-          </span>
-        </p>
       </div>
-    </div>
     </form>
-    <div class="alert alert-success" >
-     Votre inscription a réussi avec succès!
+    <div class="alert alert-success">
+      Votre inscription a réussi avec succès!
     </div>
-    <p class="txtAuth">
-      Ou inscrivez-vous avec
-    </p>
-  
+    <p class="txtAuth">Ou inscrivez-vous avec</p>
+
     <div class="iconss">
       <i class="bi bi-facebook"></i>
       <i class="bi bi-google"></i>

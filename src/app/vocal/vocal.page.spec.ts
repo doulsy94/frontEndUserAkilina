@@ -9,8 +9,8 @@ describe('VocalPage', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ VocalPage ],
-      imports: [IonicModule.forRoot()]
+      declarations: [VocalPage],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(VocalPage);

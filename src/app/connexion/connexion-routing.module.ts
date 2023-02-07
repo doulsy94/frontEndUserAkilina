@@ -6,8 +6,8 @@ import { ConnexionPage } from './connexion.page';
 const routes: Routes = [
   {
     path: '',
-    component: ConnexionPage
-  }
+    component: ConnexionPage,
+  },
 ];
 
 @NgModule({

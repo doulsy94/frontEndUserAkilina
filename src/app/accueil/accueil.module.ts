@@ -14,10 +14,10 @@ import { AccueilPage } from './accueil.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    AccueilPageRoutingModule, 
+    AccueilPageRoutingModule,
     NgxPaginationModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
   ],
-  declarations: [AccueilPage]
+  declarations: [AccueilPage],
 })
 export class AccueilPageModule {}

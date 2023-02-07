@@ -1,72 +1,101 @@
 <ion-header>
-  <ion-toolbar style="--background:#24A8F2;">
-    <ion-title size="" style="color: white; text-align: center;">Accueil</ion-title>
+  <ion-toolbar style="--background: #24a8f2">
+    <ion-title size="" style="color: white; text-align: center"
+      >Accueil</ion-title
+    >
   </ion-toolbar>
 </ion-header>
 
-<ion-content style="background-color: white;">
-  <div class="" style="width: 98%; margin-left: auto; margin-right: auto;">
-  <div class="row ">
-    <div class="tit">
-      Bienvenue sur la plateforme Akilina
+<ion-content style="background-color: white">
+  <div class="" style="width: 98%; margin-left: auto; margin-right: auto">
+    <div class="row">
+      <div class="tit">Bienvenue sur la plateforme Akilina</div>
     </div>
-  </div>
 
-  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <div
+      id="carouselExampleIndicators"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner cc">
+        <div class="carousel-item active">
+          <img src="../../assets/images/im1.jpeg" class="" alt="..." />
+        </div>
+        <div class="carousel-item">
+          <img src="../../assets/images/im2.jpeg" class="" alt="..." />
+        </div>
+        <div class="carousel-item">
+          <img src="../../assets/images/im3.jpeg" class="" alt="..." />
+        </div>
+      </div>
     </div>
-    <div class="carousel-inner cc">
-      <div class="carousel-item active ">
-        <img src="../../assets/images/im1.jpeg" class="" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="../../assets/images/im2.jpeg" class="" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="../../assets/images/im3.jpeg" class="" alt="...">
-      </div>
-    </div>
-  </div>
 
-  <div class="row">
-    <p class="text" style="text-align: justify; margin-top: 10px;">
-      L'<b>application Malienw Akilina</b> est une plateforme de partage d'idée, permettant aux Maliens de s'exprimer de 
-      manière très respectueux et de façon convenable pour mieux construire le Mali.
-      <br>
-    
+    <div class="row">
+      <p class="text" style="text-align: justify; margin-top: 10px">
+        L'<b>application Malienw Akilina</b> est une plateforme de partage
+        d'idée, permettant aux Maliens de s'exprimer de manière très respectueux
+        et de façon convenable pour mieux construire le Mali.
+        <br />
+      </p>
+    </div>
+    <div class="button">
+      <i class="bi bi-volume-up-fill"></i>
+    </div>
+
+    <p class="m" style="text-align: center">
+      <b>Partager vos idées en fonction d'un ministère</b>
     </p>
-  </div>
-      <div class="button">
-        <i class="bi bi-volume-up-fill"></i>
-      </div>
 
-     <p class="m" style="text-align: center;"><b>Partager vos idées en fonction d'un ministère</b></p> 
-   
- 
+    <div class="row sea">
+      <ion-searchbar
+        placeholder="Rechercher..."
+        name="searchText"
+        [(ngModel)]="searchText"
+      ></ion-searchbar>
+    </div>
 
-  <div class="row sea">
-    <ion-searchbar placeholder="Rechercher..."  name="searchText" 
-    [(ngModel)]="searchText"></ion-searchbar>
-  </div>
-
-  <ion-grid >
-    <ion-row>
-      <ion-col size="12" *ngFor="let minist of ministere | paginate:{itemsPerPage: 4, currentPage:p} | filter:searchText;">
-        <ion-card class="crd cd" routerLink="/ministere/{{minist.id_ministere}}">
-          <ion-card-header>
-            <img  src={{minist.image}}  srcset="">
-            <ion-card-subtitle>{{minist.libelle}}</ion-card-subtitle>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-
-  </ion-grid>
-  <div class="pag">
-  <pagination-controls (pageChange)="p = $event"></pagination-controls> 
-</div>
+    <ion-grid>
+      <ion-row>
+        <ion-col
+          size="12"
+          *ngFor="let minist of ministere | paginate:{itemsPerPage: 4, currentPage:p} | filter:searchText;"
+        >
+          <ion-card
+            class="crd cd"
+            routerLink="/ministere/{{minist.id_ministere}}"
+          >
+            <ion-card-header>
+              <img src="{{minist.image}}" srcset="" />
+              <ion-card-subtitle>{{minist.libelle}}</ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div class="pag">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
   </div>
 </ion-content>

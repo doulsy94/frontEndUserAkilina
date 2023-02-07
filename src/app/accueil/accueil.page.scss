@@ -1,40 +1,36 @@
-
 .pag {
-    display: flex;
-    width: 272px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-left: -20px;
+  display: flex;
+  width: 272px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-left: -20px;
 }
 
-img{
-    width: 100% !important;
-    height: 150px !important;
-    object-fit: cover;
+img {
+  width: 100% !important;
+  height: 150px !important;
+  object-fit: cover;
 }
 
-ion-card-subtitle{
-        text-align: center;
-        color: black;
-    }
-    ::before {
-        font-size: 33px;
-        position: relative;
-        margin-left: 84%;
-    }
+ion-card-subtitle {
+  text-align: center;
+  color: black;
+}
+::before {
+  font-size: 33px;
+  position: relative;
+  margin-left: 84%;
+}
 
-    .tit {
-        margin-bottom: 5%;
-        margin-top: 5%;
-        text-align: center;
-        font-weight: 900;
-    }
-    .row {
-        margin-top: 3%;
-    }
-    ion-col.ios.hydrated {
-        margin-top: -30px;
-    }
-
-
-
+.tit {
+  margin-bottom: 5%;
+  margin-top: 5%;
+  text-align: center;
+  font-weight: 900;
+}
+.row {
+  margin-top: 3%;
+}
+ion-col.ios.hydrated {
+  margin-top: -30px;
+}

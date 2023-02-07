@@ -1,95 +1,92 @@
-
 .social-cards ion-col {
-    padding: 0;
-  }
+  padding: 0;
+}
 
-  .tt{
-    margin-top: 7px;
-    margin-left: -65px;
-    position: absolute;
-
+.tt {
+  margin-top: 7px;
+  margin-left: -65px;
+  position: absolute;
 }
 h2 {
-    margin-left: 5%;
-    margin-top: -3%;
+  margin-left: 5%;
+  margin-top: -3%;
 }
 
 button {
-    background: none;
+  background: none;
 }
-ul{
-    z-index: 120;
- }
+ul {
+  z-index: 120;
+}
 
- ion-buttons.buttons-last-slot.sc-ion-buttons-md-h.sc-ion-buttons-md-s.md.hydrated {
-    margin-left: 26px;
+ion-buttons.buttons-last-slot.sc-ion-buttons-md-h.sc-ion-buttons-md-s.md.hydrated {
+  margin-left: 26px;
 }
 .sc-ion-buttons-ios-h {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    z-index: 99;
-    margin-left: 10px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  z-index: 99;
+  margin-left: 10px;
 }
-.nav{
-    position: fixed;
-}
-
-.imgae{
-    width: 40px !important;
-    height: 40px;
+.nav {
+  position: fixed;
 }
 
-.textComment{
-    font-size: 10px;
-    text-align: justify;
-}
-.iconComment{
-    font-size: 12px;
-}
-.card-header{
-    height: 55px !important;
-    background-color: white;
+.imgae {
+  width: 40px !important;
+  height: 40px;
 }
 
-.card-footer{
-    height: 50px !important;
-    background-color: white;
+.textComment {
+  font-size: 10px;
+  text-align: justify;
+}
+.iconComment {
+  font-size: 12px;
+}
+.card-header {
+  height: 55px !important;
+  background-color: white;
+}
+
+.card-footer {
+  height: 50px !important;
+  background-color: white;
 }
 
 .mm {
-    margin-left: -20%;
+  margin-left: -20%;
 }
 
-.mod{
-    margin-top: 60%;
+.mod {
+  margin-top: 60%;
 }
 
-.butna{
-    width: 40%;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #f22b24;
-    color: white; 
-    border-radius: 11PX;
-    height: 35px; 
+.butna {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f22b24;
+  color: white;
+  border-radius: 11px;
+  height: 35px;
 }
 
-.butn{
-    width: 40%;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #24A8F2;
-    color: white; 
-    border-radius: 11PX;
-    height: 35px; 
+.butn {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #24a8f2;
+  color: white;
+  border-radius: 11px;
+  height: 35px;
 }
 
-.igm{
-    margin-left: 10%;
-    margin-right: 10%;
+.igm {
+  margin-left: 10%;
+  margin-right: 10%;
 }
-

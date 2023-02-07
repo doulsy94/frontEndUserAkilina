@@ -13,8 +13,8 @@ import { CommentairePage } from './commentaire.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    CommentairePageRoutingModule
+    CommentairePageRoutingModule,
   ],
-  declarations: [CommentairePage]
+  declarations: [CommentairePage],
 })
 export class CommentairePageModule {}

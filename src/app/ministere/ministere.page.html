@@ -1,19 +1,21 @@
 <ion-header>
-  <ion-toolbar style="--background:#24A8F2;">
+  <ion-toolbar style="--background: #24a8f2">
     <ion-buttons slot="start">
-      <ion-back-button style="color: white;"
+      <ion-back-button
+        text=""
+        style="color: white"
         defaultHref="accueil"
         (click)="goBack()"
       ></ion-back-button>
     </ion-buttons>
-    <ion-title size="" style="color: white;" >Ministere</ion-title>
+    <ion-title size="" style="color: white">Ministere</ion-title>
   </ion-toolbar>
 </ion-header>
 <div class="sticky-top">
   <ion-item lines="full">
     <ion-button slot="start" size="small" fill="clear"> Idee Ecrit </ion-button>
     <ion-button slot="end" size="small" fill="clear"
-      ><a href="/vocal">Idee Vocal</a></ion-button
+      ><a href="/vocal/{{this.idminister}}">Idee Vocal</a></ion-button
     >
   </ion-item>
 </div>
@@ -24,8 +26,8 @@
         <ion-card class="crd">
           <ion-card-header>
             <div class="igm">
-            <img src={{image}} srcset="" />
-          </div>
+              <img src="{{image}}" srcset="" />
+            </div>
             <ion-card-title style="text-align: center; font-weight: bold"
               >{{libelle}}</ion-card-title
             >
@@ -43,13 +45,13 @@
           <div class="d-flex justify-content-between">
             <div>
               <ion-avatar slot="start">
-                <img src={{ide.user.imageuser}} class="imgae" />
+                <img src="{{ide.user.imageuser}}" class="imgae" />
               </ion-avatar>
             </div>
             <div class="mm">
               <ion-label>
                 <h3>{{ide.user.username}}</h3>
-                <p>{{ide.date | date: 'dd/MM/yyyy HH:mm:ss' }}</p>
+                <p>{{ide.date | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
               </ion-label>
             </div>
             <div>
@@ -65,7 +67,12 @@
 
                 <ul class="dropdown-menu">
                   <li>
-                    <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="lireidee(ide.id_idee)">
+                    <button
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      (click)="lireidee(ide.id_idee)"
+                    >
                       Modifier
                       <i
                         class="bi bi-pencil"
@@ -74,7 +81,11 @@
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item" (click)="supprimer(ide.id_idee)" href="#">
+                    <button
+                      class="dropdown-item"
+                      (click)="supprimer(ide.id_idee)"
+                      href="#"
+                    >
                       Supprimer <i class="bi bi-trash3" style="color: red"></i>
                     </button>
                   </li>
@@ -90,19 +101,27 @@
           <div class="d-flex justify-content-between">
             <div>
               <button>
-                <i class="bi bi-hand-thumbs-up-fill iconComment"></i>
-                <div class="textComment">{{jaime[i]}} J'aime</div>
+                <a
+                  (click)="likeIdee(ide, userlike)"
+                  [ngStyle]="{ color: like === 'Unlike' ? '#4F9AFF' : '#000000' }"
+                  class="card-link"
+                  style="cursor: pointer"
+                  ><i class="bi bi-hand-thumbs-up-fill iconComment"></i
+                ></a>
+                <div class="textComment">J'aime</div>
               </button>
             </div>
             <div>
               <button>
                 <i class="bi bi-hand-thumbs-down-fill iconComment"></i>
-                <div class="textComment">{{jaime[i]}} J'aime pas</div>
+                <div class="textComment">J'aime pas</div>
               </button>
             </div>
             <div>
               <button>
-                <a routerLink="/commentaire/{{ide.id_idee}}"><i class="bi bi-chat-left-dots-fill iconComment"></i></a>
+                <a routerLink="/commentaire/{{ide.id_idee}}"
+                  ><i class="bi bi-chat-left-dots-fill iconComment"></i
+                ></a>
                 <div class="textComment">2 Commentaire</div>
               </button>
             </div>
@@ -125,20 +144,35 @@
   </ion-toolbar>
 </ion-footer>
 
-
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog mod">
     <div class="modal-content">
-      <form #update = "ngForm" (ngSubmit)="modifierPopup(id,update.value.contenu)">
-      <div class="form-group">
-        <input  ngModel="{{ideee}}" class="form-control" name="contenu" id="contenu">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class=" butna " data-bs-dismiss="modal">Annuler</button>
-        <button type="submit" class=" butn" >Actualiser</button>
-      </div>
-    </form>
+      <form
+        #update="ngForm"
+        (ngSubmit)="modifierPopup(id,update.value.contenu)"
+      >
+        <div class="form-group">
+          <input
+            ngModel="{{ideee}}"
+            class="form-control"
+            name="contenu"
+            id="contenu"
+          />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="butna" data-bs-dismiss="modal">
+            Annuler
+          </button>
+          <button type="submit" class="butn">Actualiser</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

@@ -1,67 +1,73 @@
 <ion-header>
-  <ion-toolbar  style="--background:#24A8F2;">
-  <ion-title size="" style="color: white; text-align: center;" >Modification Profil</ion-title>
-
-</ion-toolbar>
+  <ion-toolbar style="--background: #24a8f2">
+    <ion-title size="" text="" style="color: white; text-align: center"
+      >Modification Profil</ion-title
+    >
+  </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-  
-  <h3 style="text-align: center;"> Informations du compte </h3>
-  <form #updateForm="ngForm"  (ngSubmit)="modifierUser(updateForm.value)">
-    <div class="form" style="margin-top: 5%;">
+  <h3 style="text-align: center">Informations du compte</h3>
+  <form #updateForm="ngForm" (ngSubmit)="modifierUser(updateForm.value)">
+    <div class="form" style="margin-top: 5%">
       <div class="form-group">
         <span> Nom d'utilisateur *</span>
         <input
-        type="text" ngModel="{{username}}" 
+          type="text"
+          ngModel="{{ username }}"
           class="form-control"
           name="username"
           id="username"
           placeholder="Entrez votre nom"
           required
           disable
-        >
+        />
       </div>
       <div class="form-group">
         <span> Téléphone *</span>
         <input
-        type="text" ngModel="{{numero}}"
+          type="text"
+          ngModel="{{ numero }}"
           class="form-control"
           name="numero"
           id="numero"
           placeholder="Entrez votre numéro"
           required
-        >
+        />
       </div>
       <div class="form-group">
         <span> Email </span>
         <input
-        type="email" ngModel="{{email}}"
+          type="email"
+          ngModel="{{ email }}"
           class="form-control"
           name="email"
           id="email"
           placeholder="******@gmail.com"
-        >
+        />
       </div>
       <div class="form-group">
         <span> Adresse </span>
         <input
-        type="text" ngModel="{{addresse}}"
+          type="text"
+          ngModel="{{ addresse }}"
           class="form-control"
           name="addresse"
           id="addresse"
           placeholder="Entrer votre adresse"
-        >
+        />
       </div>
     </div>
-    <br>
- 
+    <br />
+
     <ion-toolbar>
-      <ion-buttons slot="start" style="background-color: red;">
-        <ion-button  (click)="cancel()" style="color: white;">Annuler</ion-button>
+      <ion-buttons slot="start" style="background-color: red">
+        <ion-button (click)="cancel()" style="color: white">Annuler</ion-button>
       </ion-buttons>
       <ion-title></ion-title>
-      <ion-buttons slot="end" style="background-color: #24A8F2;">
-        <ion-button type="submit" [strong]="true" style="color: white;">Modifier</ion-button>
+      <ion-buttons slot="end" style="background-color: #24a8f2">
+        <ion-button type="submit" [strong]="true" style="color: white"
+          >Modifier</ion-button
+        >
       </ion-buttons>
     </ion-toolbar>
   </form>

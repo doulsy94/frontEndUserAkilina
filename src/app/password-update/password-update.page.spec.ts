@@ -9,8 +9,8 @@ describe('PasswordUpdatePage', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PasswordUpdatePage ],
-      imports: [IonicModule.forRoot()]
+      declarations: [PasswordUpdatePage],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PasswordUpdatePage);

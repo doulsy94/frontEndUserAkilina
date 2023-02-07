@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -25,13 +25,10 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-
-
-
-ion-content{
-    // ICI ON BLOCK LE SCROLLING
-    --offset-bottom: auto!important;
-    background: #F8F6FB;
+ion-content {
+  // ICI ON BLOCK LE SCROLLING
+  --offset-bottom: auto !important;
+  background: #f8f6fb;
   --overflow: hidden;
   overflow: auto;
   &::-webkit-scrollbar {
@@ -39,19 +36,18 @@ ion-content{
   }
 }
 .modal-backdrop {
-position: fixed;
+  position: fixed;
   height: 0px !important;
-
 }
 // .modal-backdrop {
 //   position: fixed;
 //   height: 0px !important;
-  
+
 // }
 // .modal-backdrop {
 //   position: fixed;
 //   height: 0px !important;
-  
+
 // }
 // .modal {
 //   --bs-modal-zindex: 1055;

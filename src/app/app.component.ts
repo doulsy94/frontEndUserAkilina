@@ -6,17 +6,15 @@ import { TokenStorageService } from './_services/token-storage.service';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent implements OnInit{
- 
+export class AppComponent implements OnInit {
   title = 'APIAKILINAINTERFACEUSER';
 
-  
   private roles: string[] = [];
   isLoggedIn = false;
   showUserBoard = false;
   emailOrNumero?: string;
 
-  constructor(private tokenStorageService: TokenStorageService) { }
+  constructor(private tokenStorageService: TokenStorageService) {}
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
@@ -31,12 +29,8 @@ export class AppComponent implements OnInit{
     }
   }
 
-
   logout(): void {
-    
     this.tokenStorageService.signOut();
     window.location.reload();
   }
-
 }
-

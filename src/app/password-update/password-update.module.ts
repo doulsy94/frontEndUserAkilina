@@ -13,8 +13,8 @@ import { PasswordUpdatePage } from './password-update.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    PasswordUpdatePageRoutingModule
+    PasswordUpdatePageRoutingModule,
   ],
-  declarations: [PasswordUpdatePage]
+  declarations: [PasswordUpdatePage],
 })
 export class PasswordUpdatePageModule {}
