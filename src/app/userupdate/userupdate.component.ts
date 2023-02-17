@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AnimationController, IonModal, ModalController } from '@ionic/angular';
+import Swal from 'sweetalert2';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { UsersService } from '../_services/users.service';
 
@@ -57,6 +58,24 @@ export class UserupdateComponent implements OnInit {
   modifierUser(user: any) {
     this.user.modifierUserParId(this.id_user, user).subscribe((data) => {
       console.log('data: ' + JSON.stringify(data));
+    });
+    Swal.fire({
+      position: 'center',
+
+      text: 'Information modifier avec success!!',
+      icon: 'success',
+      heightAuto: false,
+      showConfirmButton: true,
+      confirmButtonText: 'OK',
+      confirmButtonColor: '#0857b5',
+      showDenyButton: false,
+      showCancelButton: false,
+      allowOutsideClick: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.cancel() ;
+
+      }
     });
   }
 }

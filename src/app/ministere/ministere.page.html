@@ -101,22 +101,24 @@
           <div class="d-flex justify-content-between">
             <div>
               <button>
-                <a
-                  (click)="likeIdee(ide, userlike)"
-                  [ngStyle]="{ color: like === 'Unlike' ? '#4F9AFF' : '#000000' }"
+                   <a
+                  (click)="liker(ide, userlike)"
+                  [ngClass]="{'bleu': ide.isclick , 'noir': !ide.isclick }"
                   class="card-link"
                   style="cursor: pointer"
                   ><i class="bi bi-hand-thumbs-up-fill iconComment"></i
                 ></a>
-                <div class="textComment">J'aime</div>
+                <div class="textComment"> J'aime
+           
+                </div>
               </button>
             </div>
-            <div>
+            <!-- <div>
               <button>
                 <i class="bi bi-hand-thumbs-down-fill iconComment"></i>
                 <div class="textComment">J'aime pas</div>
               </button>
-            </div>
+            </div> -->
             <div>
               <button>
                 <a routerLink="/commentaire/{{ide.id_idee}}"

@@ -5,6 +5,7 @@
       <ion-back-button
         text=""
         style="color: white"
+        defaultHref="ministere"
         (click)="goBack()"
       ></ion-back-button>
     </ion-buttons>
@@ -42,23 +43,30 @@
           <ion-avatar slot="start">
             <img src="{{v.user.imageuser}}" class="imgae" />
           </ion-avatar>
-          <ion-icon
-            *ngIf="v.user.id_user == id_user"
-            style="
-              position: relative;
-              top: -50%;
-              left: 210px;
-              font-size: 2em !important;
-              color: red;
-            "
-            name="trash-outline"
-            slot="icon-only"
-            (click)="supprimer(v.id)"
-          ></ion-icon>
+          <div style="margin-bottom: 7vh;">
+
+            <ion-icon
+              *ngIf="v.user.id_user == id_user"
+              style="
+                position: absolute;
+              top:2%;
+              margin-left: 3.5%;
+                left: 210px;
+                font-size: 2em !important;
+                color: red;
+              "
+              name="trash-outline"
+              slot="icon-only"
+              (click)="supprimer(v.id)"
+            ></ion-icon>
+          </div>
         </div>
-
-        <h3>{{v.user.username}}</h3>
-
+        <div class="mm">
+          <ion-label>
+            <h3 style="color: black">{{v.user.username}}</h3>
+            <p>{{v.dateCreation | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
+          </ion-label>
+        </div>
         <audio controls src="{{v.fileName}}" style="margin-top: -50%">
           <a href="{{v.fileName}}"> Download audio </a>
         </audio>
@@ -82,7 +90,7 @@
     >
       <ion-col size="8">
         <span *ngIf="!recording" style="font-size: 0.8em">
-          Appuyez et maintenez pour enregistrer
+          Appuyez et maintenez pour enregistrer puis cliquez sur envoyer
         </span>
         <span *ngIf="recording"> {{durationDisplay}} </span>
       </ion-col>

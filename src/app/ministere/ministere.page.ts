@@ -40,8 +40,8 @@ export class MinisterePage implements OnInit {
   userlike:any
   ide1: any;
   id_idee:any
- 
- 
+likes: any
+  isClicked = false;
 
   constructor(
     private router: Router,
@@ -53,6 +53,7 @@ export class MinisterePage implements OnInit {
   ) {}
 
   onSubmit() {
+    
     this.ideeService
       .ajouterIdee(this.cont, this.id_user, this.idminister)
       .subscribe((data) => {
@@ -62,7 +63,7 @@ export class MinisterePage implements OnInit {
         console.log(data);
       });
 
-    Swal.fire({
+    Swal.fire({ 
       position: 'center',
 
       text: 'Idee ajouter avec success!!',
@@ -76,14 +77,18 @@ export class MinisterePage implements OnInit {
       allowOutsideClick: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        this.reloadPage();
+        this. lireideeparid();
+       // this.reloadPage();
       }
     });
+    this.resetForm();
   }
 
   ngOnInit() {
+
     this.id_user = this.storageService.getUser().id_user;
     this.userlike= this.storageService.getUser()
+   
     console.log(this.userlike + "-----------------------userlike")
     this.idminister = this.route.snapshot.params['id'];
     console.log('ministere  ' + this.idminister);
@@ -99,17 +104,29 @@ export class MinisterePage implements OnInit {
     this.ididee = this.route.snapshot.params['id'];
     console.log(this.ididee);
 
+
+    this.lireideeparid();
+
+  }
+  lireideeparid(){
     this.ideeService.lireIdeeParIdMinistere(this.ididee).subscribe((data) => {
       this.ide = data;
 
       this.contenu = data[0].contenu_idee;
       this.imageuser = data[0].imageuser;
       this.date = data[0].date;
-      console.log(data[0].contenu_idee);
+      this.likes = data[0].likes;
+      console.log("likeeeeee"+data[0].likes);
+      console.log(data[0].isclick);
 
       console.log(this.ide.length);
     });
-
+  }
+  resetForm(){
+    this.cont='';
+  }
+  resetForm1(){
+  this.contenu='';
   }
 
   goBack() {
@@ -159,7 +176,7 @@ export class MinisterePage implements OnInit {
           allowOutsideClick: false,
         }).then((result) => {
           if (result.isConfirmed) {
-            this.reloadPage();
+             this.lireideeparid();
           }
         });
       }
@@ -201,8 +218,11 @@ export class MinisterePage implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.reloadPage();
+
       }
     });
+    this.lireideeparid();
+
   }
 
   displayLike(user: User) {
@@ -220,15 +240,18 @@ export class MinisterePage implements OnInit {
   }
 
   likeIdee(idee: any, user: any) {
+
     if (this.color === '#000000') {
-      this.color = '#4F9AFF';
+      this.color = '#18BC9C';
       this.like = 'Unlike';
       this.doLike(idee, user);
       idee.likes += 1;
+      this.lireideeparid();
     } else {
       this.color = '#000000';
       this.like = 'Like';
       this.doUnlike(idee, user);
+      this.lireideeparid();
       if (user.likedIdees != null) {
         for (let i = 0; i < user.likedIdees.length; i++) {
           if (user.likedIdees[i].id_user === idee.id_idee) {
@@ -239,32 +262,54 @@ export class MinisterePage implements OnInit {
       if (idee.likes > 0) {
         this.idee.likes -= 1;
       }
+      
     }
   }
 
-  doLike(idee: any, user: any) {
-    this.subscriptions.push(
-      this.ideeService.like(idee.id_idee, user.id_user).subscribe(
-        response => {
-          console.log(response);
-        },
-        error => {
-          console.log(error);
-        }
-      )
-    );
+
+  liker(idee:any,user:any){
+    if(idee.isclick == true){
+      this.doLike(idee,user)
+      this.doUnlike(idee,user)
+    }else{
+      this.doLike(idee,user)
+       this.doUnlike(idee,user)
+    }
   }
 
-  doUnlike(idee: any, user: any) {
-    this.subscriptions.push(
-      this.ideeService.unlike(idee.id_idee, user.id_user).subscribe(
-        response => {
-          console.log(response);
-        },
-        error => {
-          console.log(error);
-        }
-      )
-    );
+  doLike(idee: any, user: any):any {
+    // this.subscriptions.push(
+      
+    // );
+    this.ideeService.like(user.id_user, idee.id_idee).subscribe(
+      response => {
+        console.log(response);
+        this.isClicked = true;
+        this.lireideeparid();
+        return response;
+      },
+      error => {
+        console.log(error);
+        return error;
+      }
+    )
+  }
+
+  doUnlike(idee: any, user: any):any {
+    // this.subscriptions.push(
+      
+    // );
+    this.ideeService.unlike(user.id_user, idee.id_idee).subscribe(
+      response => {
+        console.log(response);
+        this.isClicked = false;
+        this.lireideeparid();
+        return response;
+      },
+      error => {
+        console.log(error);
+        return error;
+      }
+    )
   }
 }

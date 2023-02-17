@@ -57,14 +57,17 @@ export class CommentairePage implements OnInit {
       allowOutsideClick: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        this.reloadPage();
+        this.lirecommentaireparididee();
       }
     });
+    this.resetForm();
   }
 
   ngOnInit() {
+
     this.id_user = this.storageService.getUser().id_user;
     this.ididee = this.route.snapshot.params['id'];
+
     console.log('idee  ' + this.ididee);
     console.log('utilisateur ' + this.id_user);
 
@@ -79,20 +82,28 @@ export class CommentairePage implements OnInit {
     this.idcommentaire = this.route.snapshot.params['id'];
     console.log(this.idcommentaire);
 
-    this.commentaire
-      .lireCommentaireParIdIdee(this.idcommentaire)
-      .subscribe((data) => {
-        this.comment = data;
-        this.contenu = data[0].contenu_commentaire;
-        this.imageuser = data[0].imageuser;
-        console.log(data[0].contenu_commentaire);
-
-        console.log(this.comment.length);
-      });
+    this.lirecommentaireparididee();
   }
+
+  lirecommentaireparididee(){
+  this.commentaire
+  .lireCommentaireParIdIdee(this.idcommentaire)
+  .subscribe((data) => {
+    this.comment = data;
+    this.contenu = data[0].contenu_commentaire;
+    this.imageuser = data[0].imageuser;
+    console.log(data[0].contenu_commentaire);
+
+    console.log(this.comment.length);
+  });
+}
 
   goBack() {
     this.back.back();
+  }
+
+  resetForm(){
+    this.cont='';
   }
 
   reloadPage(): void {
@@ -140,7 +151,7 @@ export class CommentairePage implements OnInit {
           allowOutsideClick: false,
         }).then((result) => {
           if (result.isConfirmed) {
-            this.reloadPage();
+            this.lirecommentaireparididee();
           }
         });
       }
@@ -185,5 +196,6 @@ export class CommentairePage implements OnInit {
         this.reloadPage();
       }
     });
+    this.lirecommentaireparididee();
   }
 }

@@ -21,7 +21,6 @@ export class PasswordUpdatePage implements OnInit {
   numero: any;
   email: any
 
-
   constructor(
     private authService: AuthService,
     private storageService: TokenStorageService,
@@ -75,8 +74,7 @@ export class PasswordUpdatePage implements OnInit {
 
   private showErrorMessage(errorMessage: string): void {
     if (errorMessage === 'PasswordNotMatched') {
-    
-      
+     
       Swal.fire({
         position: 'center',
 
@@ -95,10 +93,25 @@ export class PasswordUpdatePage implements OnInit {
         }
       });
     } else if (errorMessage === 'IncorrectCurrentPassword') {
-      // this.alertService.showAlert(
-       // 'The current password is incorrect. Please try again.',
-       // AlertType.DANGER
-     // );
+      
+      Swal.fire({
+        position: 'center',
+
+        text: 'Ancien mot de passe est incorrect',
+        icon: 'error',
+        heightAuto: false,
+        showConfirmButton: true,
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#0857b5',
+        showDenyButton: false,
+        showCancelButton: false,
+        allowOutsideClick: false,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          
+        }
+      });
+
     } else {
      // this.alertService.showAlert(
       //  'Password change failed. Please try again.',
