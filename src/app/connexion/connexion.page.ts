@@ -9,6 +9,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./connexion.page.scss'],
 })
 export class ConnexionPage implements OnInit {
+
+  type=true;
+
+
+
   form: any = {
     emailOrNumero: null,
     password: null,
@@ -56,4 +61,9 @@ export class ConnexionPage implements OnInit {
   reloadPage(): void {
     window.location.reload();
   }
+
+  changeType() {
+    this.type = !this.type;
+  }
+  
 }

@@ -14,6 +14,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./password-update.page.scss'],
 })
 export class PasswordUpdatePage implements OnInit {
+
+  type=true;
+
   private subscriptions: Subscription[] = [];
   id_user: any;
   user!: User;
@@ -118,6 +121,10 @@ export class PasswordUpdatePage implements OnInit {
        // AlertType.DANGER
    //   );
     }
+  }
+
+  changeType() {
+    this.type = !this.type;
   }
 
 

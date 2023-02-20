@@ -35,6 +35,7 @@ export class MinisterePage implements OnInit {
   textVariable: any;
   id_user: any;
   cont: any;
+  msg:any;
   idee1: any;
   imageuser: any;
   userlike:any
@@ -57,31 +58,55 @@ likes: any
     this.ideeService
       .ajouterIdee(this.cont, this.id_user, this.idminister)
       .subscribe((data) => {
-        this.cont = data;
+        this.msg = data.data;
+        console.log(this.msg);
         this.date = data.date;
         this.imageuser = data.imageuser;
         console.log(data);
-      });
-
-    Swal.fire({ 
-      position: 'center',
-
-      text: 'Idee ajouter avec success!!',
-      icon: 'success',
-      heightAuto: false,
-      showConfirmButton: true,
-      confirmButtonText: 'OK',
-      confirmButtonColor: '#0857b5',
-      showDenyButton: false,
-      showCancelButton: false,
-      allowOutsideClick: false,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this. lireideeparid();
-       // this.reloadPage();
+    if(data.data == "Veuillez utiliser des mots approprié"){
+        Swal.fire({ 
+          position: 'center',
+    
+          text: "Veuillez S.V.P utilisez des mots approprié",
+          icon: 'error',
+          heightAuto: false,
+          showConfirmButton: true,
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#0857b5',
+          showDenyButton: false,
+          showCancelButton: false,
+          allowOutsideClick: false,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this. lireideeparid();
+           // this.reloadPage();
+          }
+        });
+      }else{
+        Swal.fire({ 
+          position: 'center',
+    
+          text:"Idee ajouter avec succès",
+          icon: 'success',
+          heightAuto: false,
+          showConfirmButton: true,
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#0857b5',
+          showDenyButton: false,
+          showCancelButton: false,
+          allowOutsideClick: false,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this. lireideeparid();
+           // this.reloadPage();
+          }
+        });
+        this.resetForm();
       }
-    });
-    this.resetForm();
+      });
+      console.log(this.msg);
+      
+     // this.resetForm();
   }
 
   ngOnInit() {

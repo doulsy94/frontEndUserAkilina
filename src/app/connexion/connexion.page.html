@@ -49,9 +49,12 @@
                 ><ion-icon name="lock-closed-outline"></ion-icon> MOT DE
                 PASSE</label
               >
+           <div class="form-control" style="display: flex;">
               <input
+              style="border: none;"
+              [type]="type ? 'password' : 'text'" 
                 type="password"
-                class="form-control in"
+               
                 name="password"
                 [(ngModel)]="form.password"
                 required
@@ -59,7 +62,10 @@
                 #password="ngModel"
                 placeholder="Mot de Passe"
               />
+              <ion-icon [name]="type ? 'eye-off' : 'eye'" slot="end" color="dark" (click)="changeType()" style="font-family: 'Poppins';
+              font-style: normal; opacity: 0.5; margin-top: 2%; margin-left: 2%;"></ion-icon>
             </div>
+          </div>
             <div
               class="alert alert-danger"
               role="alert"

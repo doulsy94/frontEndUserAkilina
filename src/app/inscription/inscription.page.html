@@ -106,26 +106,42 @@
               ><ion-icon name="lock-closed-outline"></ion-icon> MOT DE
               PASSE</label
             >
-            <input
-              type="password"
-              class="form-control in"
-              name="password"
-              [(ngModel)]="form.password"
-              required
-              minlength="6"
-              #password="ngModel"
-              placeholder="*******"
-              required
-            />
-            <div
-              class="alert-danger dan"
-              *ngIf="password.errors && f.submitted"
-            >
-              <div *ngIf="password.errors['required']">
-                Mot de Passe obligatoire
-              </div>
-              <div *ngIf="password.errors['minlength']">
-                Le mot de passe doit avoir au moins 6 caractères
+            <div class="form-control" style="display: flex">
+              <input
+                style="border: none !important;"
+                [type]="type ? 'password' : 'text'"
+                type="password"
+                name="password"
+                [(ngModel)]="form.password"
+                required
+                minlength="6"
+                #password="ngModel"
+                placeholder="*******"
+                required
+              />
+              <ion-icon
+                [name]="type ? 'eye-off' : 'eye'"
+                slot="end"
+                color="dark"
+                (click)="changeType()"
+                style="
+                  font-family: 'Poppins';
+                  font-style: normal;
+                  opacity: 0.5;
+                  margin-top: 2%;
+                  margin-left: 2%;
+                "
+              ></ion-icon>
+              <div
+                class="alert-danger dan"
+                *ngIf="password.errors && f.submitted"
+              >
+                <div *ngIf="password.errors['required']">
+                  Mot de Passe obligatoire
+                </div>
+                <div *ngIf="password.errors['minlength']">
+                  Le mot de passe doit avoir au moins 6 caractères
+                </div>
               </div>
             </div>
           </div>
@@ -134,9 +150,12 @@
               ><ion-icon name="lock-closed-outline"></ion-icon> CONFIRMER MOT DE
               PASSE</label
             >
+            <div class="form-control" style="display: flex">
             <input
+            style="border: none !important;"
+            [type]="type ? 'password' : 'text'"
               type="password"
-              class="form-control in"
+             
               name="confirmPassword"
               [(ngModel)]="form.confirmPassword"
               required
@@ -144,6 +163,19 @@
               #confirmPassword="ngModel"
               placeholder="*******"
             />
+            <ion-icon
+            [name]="type ? 'eye-off' : 'eye'"
+            slot="end"
+            color="dark"
+            (click)="changeType()"
+            style="
+              font-family: 'Poppins';
+              font-style: normal;
+              opacity: 0.5;
+              margin-top: 2%;
+              margin-left: 2%;
+            "
+          ></ion-icon>
             <div
               class="alert-danger dan"
               *ngIf="confirmPassword.errors && f.submitted"
@@ -156,7 +188,7 @@
               </div>
             </div>
           </div>
-
+          </div>
           <div class="form-group form-check" required>
             <input
               type="checkbox"

@@ -25,6 +25,7 @@ export class CommentairePage implements OnInit {
   conten: any;
   id: number = 0;
   imageuser: any;
+  msg:any;
 
   constructor(
     private router: Router,
@@ -39,28 +40,53 @@ export class CommentairePage implements OnInit {
     this.commentaire
       .ajouterCommentaire(this.cont, this.id_user, this.ididee)
       .subscribe((data) => {
-        this.cont = data;
-        console.log('contenu ' + this.cont);
-      });
-
-    Swal.fire({
-      position: 'center',
-
-      text: 'Commentaire ajouter avec success!!',
-      icon: 'success',
-      heightAuto: false,
-      showConfirmButton: true,
-      confirmButtonText: 'OK',
-      confirmButtonColor: '#0857b5',
-      showDenyButton: false,
-      showCancelButton: false,
-      allowOutsideClick: false,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.lirecommentaireparididee();
-      }
-    });
-    this.resetForm();
+        this.msg = data.data;
+        console.log(this.msg);
+       
+        console.log(data);
+    
+        if(data.data == "Veuillez utiliser des mots approprié"){
+          Swal.fire({ 
+            position: 'center',
+      
+            text: "Veuillez S.V.P utilisez des mots approprié",
+            icon: 'error',
+            heightAuto: false,
+            showConfirmButton: true,
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#0857b5',
+            showDenyButton: false,
+            showCancelButton: false,
+            allowOutsideClick: false,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this. lirecommentaireparididee();
+             // this.reloadPage();
+            }
+          });
+        }else{
+          Swal.fire({ 
+            position: 'center',
+      
+            text:"Commentaire ajouter avec succès",
+            icon: 'success',
+            heightAuto: false,
+            showConfirmButton: true,
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#0857b5',
+            showDenyButton: false,
+            showCancelButton: false,
+            allowOutsideClick: false,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this. lirecommentaireparididee();
+             // this.reloadPage();
+            }
+          });
+          this.resetForm();
+        }
+        });
+        console.log(this.msg);
   }
 
   ngOnInit() {

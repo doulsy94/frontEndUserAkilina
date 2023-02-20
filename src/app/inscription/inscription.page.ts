@@ -10,6 +10,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./inscription.page.scss'],
 })
 export class InscriptionPage implements OnInit {
+
+  type=true;
+
   form: any = {
     username: null,
     email: null,
@@ -79,4 +82,9 @@ export class InscriptionPage implements OnInit {
       }
     });
   }
+
+  changeType() {
+    this.type = !this.type;
+  }
+
 }
