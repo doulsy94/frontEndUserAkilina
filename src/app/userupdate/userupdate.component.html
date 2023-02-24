@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar style="--background: #24a8f2">
-    <ion-title size="" text="" style="color: white; text-align: center"
-      >Modification Profil</ion-title
+    <ion-title text="" style="color: white; text-align: center; font-size: large;"
+      >Modification du Profil</ion-title
     >
   </ion-toolbar>
 </ion-header>
@@ -10,7 +10,7 @@
   <form #updateForm="ngForm" (ngSubmit)="modifierUser(updateForm.value)">
     <div class="form" style="margin-top: 5%">
       <div class="form-group">
-        <span> Nom d'utilisateur *</span>
+        <label> Nom d'utilisateur  <span style="color: red;">*</span></label>
         <input
           type="text"
           ngModel="{{ username }}"
@@ -23,7 +23,7 @@
         />
       </div>
       <div class="form-group">
-        <span> Téléphone *</span>
+        <label> Téléphone  <span style="color: red;">*</span></label>
         <input
           type="text"
           ngModel="{{ numero }}"
@@ -35,7 +35,7 @@
         />
       </div>
       <div class="form-group">
-        <span> Email </span>
+        <label> Email </label>
         <input
           type="email"
           ngModel="{{ email }}"
@@ -46,7 +46,7 @@
         />
       </div>
       <div class="form-group">
-        <span> Adresse </span>
+        <label> Adresse </label>
         <input
           type="text"
           ngModel="{{ addresse }}"
@@ -60,13 +60,13 @@
     <br />
 
     <ion-toolbar>
-      <ion-buttons slot="start" style="background-color: red">
-        <ion-button (click)="cancel()" style="color: white">Annuler</ion-button>
+      <ion-buttons slot="start" style="background-color: red; width: 40%; border-radius: 15px; ">
+        <ion-button (click)="cancel()" style="--color: white; margin-left: 20%;">Annuler</ion-button>
       </ion-buttons>
       <ion-title></ion-title>
-      <ion-buttons slot="end" style="background-color: #24a8f2">
-        <ion-button type="submit" [strong]="true" style="color: white"
-          >Modifier</ion-button
+      <ion-buttons slot="end" style="background-color: #24a8f2 !important; width: 40%; border-radius: 15px;">
+        <ion-button type="submit" [strong]="true" style="--color: white; margin-left: 20%;"
+          >Modifier </ion-button
         >
       </ion-buttons>
     </ion-toolbar>

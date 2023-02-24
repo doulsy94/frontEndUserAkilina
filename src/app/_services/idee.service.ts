@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 const AUTH_API = 'http://localhost:8080/api/idee';
+const AUTH_API1 = 'http://localhost:8080/api/commentaire';
+
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -95,4 +97,9 @@ export class IdeeService {
       responseType: 'text',
     });
   }
+
+  nombreCommentaireSurIdee(id_idee: any): Observable<any> {
+    return this.http.get(`${AUTH_API1}/afficherNombreCommentaireParIdIdee/${id_idee}`);
+  }
+
 }

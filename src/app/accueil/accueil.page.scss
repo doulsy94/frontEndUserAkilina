@@ -1,26 +1,26 @@
-.pag {
-  display: flex;
-  width: 272px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-left: -20px;
-}
 
-img {
+.cc img {
   width: 100% !important;
-  height: 150px !important;
+  height: 100% !important;
   object-fit: cover;
 }
-
+.cc{
+  height: 200px;
+}
 ion-card-subtitle {
   text-align: center;
   color: black;
 }
-::before {
-  font-size: 33px;
-  position: relative;
-  margin-left: 84%;
+
+.min{
+width: 98% !important;
+
 }
+
+.min1{
+  height: 100px !important;
+}
+
 
 .tit {
   margin-bottom: 5%;
@@ -31,6 +31,4 @@ ion-card-subtitle {
 .row {
   margin-top: 3%;
 }
-ion-col.ios.hydrated {
-  margin-top: -30px;
-}
+

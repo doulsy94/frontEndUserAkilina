@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar style="--background: #24a8f2">
-    <ion-title size="" style="color: white; text-align: center"
+    <ion-title style="color: white; text-align: center; font-size: large;"
       >Inscription</ion-title
     >
   </ion-toolbar>
@@ -25,7 +25,7 @@
           <div class="form-group">
             <label
               ><ion-icon name="person-circle-outline"></ion-icon> NOM
-              D'UTILISATEUR</label
+              D'UTILISATEUR  <span style="color: red;">*</span> </label
             >
             <input
               type="text"
@@ -35,7 +35,7 @@
               [(ngModel)]="form.username"
               required
               minlength="3"
-              maxlength="20"
+              maxlength="100"
               #username="ngModel"
             />
             <div
@@ -54,7 +54,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label><ion-icon name="call-outline"></ion-icon> NUMERO</label>
+            <label><ion-icon name="call-outline"></ion-icon> NUMERO  <span style="color: red;">*</span> </label>
             <input
               type="text"
               class="form-control in"
@@ -63,8 +63,11 @@
               numero
               #numero="ngModel"
               placeholder="+223 ********"
+              minlength="8"
+              maxlength="8"
               required
             />
+          
             <div class="alert-danger dan" *ngIf="numero.errors && f.submitted">
               <div *ngIf="numero.errors">Numero est obligatoire</div>
               <div *ngIf="numero.errors['numero']">
@@ -104,17 +107,20 @@
           <div class="form-group">
             <label
               ><ion-icon name="lock-closed-outline"></ion-icon> MOT DE
-              PASSE</label
+              PASSE  <span style="color: red;">*</span> </label
             >
+            <div>
             <div class="form-control" style="display: flex">
               <input
-                style="border: none !important;"
+             
+                style="border: none !important; width: 200%;"
                 [type]="type ? 'password' : 'text'"
                 type="password"
                 name="password"
                 [(ngModel)]="form.password"
                 required
                 minlength="6"
+                maxlength="20"
                 #password="ngModel"
                 placeholder="*******"
                 required
@@ -128,10 +134,12 @@
                   font-family: 'Poppins';
                   font-style: normal;
                   opacity: 0.5;
-                  margin-top: 2%;
+                  margin-top: -4%;
                   margin-left: 2%;
+                  font-size: 50px;
                 "
               ></ion-icon>
+            </div>
               <div
                 class="alert-danger dan"
                 *ngIf="password.errors && f.submitted"
@@ -148,11 +156,12 @@
           <div class="form-group">
             <label
               ><ion-icon name="lock-closed-outline"></ion-icon> CONFIRMER MOT DE
-              PASSE</label
+              PASSE  <span style="color: red;">*</span> </label
             >
+            <div>
             <div class="form-control" style="display: flex">
             <input
-            style="border: none !important;"
+            style="border: none !important; width: 200%;"
             [type]="type ? 'password' : 'text'"
               type="password"
              
@@ -160,6 +169,7 @@
               [(ngModel)]="form.confirmPassword"
               required
               minlength="6"
+              maxlength="20"
               #confirmPassword="ngModel"
               placeholder="*******"
             />
@@ -172,10 +182,12 @@
               font-family: 'Poppins';
               font-style: normal;
               opacity: 0.5;
-              margin-top: 2%;
+              margin-top: -4%;
               margin-left: 2%;
+              font-size: 50px;
             "
           ></ion-icon>
+        </div>
             <div
               class="alert-danger dan"
               *ngIf="confirmPassword.errors && f.submitted"
@@ -189,19 +201,19 @@
             </div>
           </div>
           </div>
-          <div class="form-group form-check" required>
-            <input
+       
+            <!-- <input
               type="checkbox"
               class="form-check-input ch"
               id="exampleCheck1"
               required
-            />
+            /> -->
             <p class="ins">
               En continuant, vous acceptez les Conditions générales
               d’utilisation de Akilina.
               <a href="">Lire notre Politique de confidentialité</a>.
             </p>
-          </div>
+         
           <div class="form-group text-center">
             <button type="submit" value="" class="inscription">
               S'inscrire
@@ -211,7 +223,7 @@
             class="alert alert-warning"
             *ngIf="f.submitted && isSignUpFailed"
           >
-            Inscription échouer!<br />
+            Inscription échouer!<br /> {{errorMessage}}
           </div>
           <p class="ins">
             Vous avez un compte?
@@ -221,16 +233,18 @@
           </p>
         </div>
       </div>
+      <div class="alert alert-success" *ngIf="f.submitted && isSuccessful">
+        Votre inscription a réussi avec succès!
+      </div>
+      
     </form>
-    <div class="alert alert-success">
-      Votre inscription a réussi avec succès!
-    </div>
-    <p class="txtAuth">Ou inscrivez-vous avec</p>
+    
+    <!-- <p class="txtAuth">Ou inscrivez-vous avec</p>
 
     <div class="iconss">
       <i class="bi bi-facebook"></i>
       <i class="bi bi-google"></i>
       <i class="bi bi-github"></i>
-    </div>
+    </div> -->
   </div>
 </ion-content>

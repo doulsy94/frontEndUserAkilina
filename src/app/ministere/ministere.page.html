@@ -3,18 +3,18 @@
     <ion-buttons slot="start">
       <ion-back-button
         text=""
-        style="color: white"
+        style="color: white; font-size: large;"
         defaultHref="accueil"
         (click)="goBack()"
       ></ion-back-button>
     </ion-buttons>
-    <ion-title size="" style="color: white">Ministere</ion-title>
+    <ion-title size="" style="color: white; font-size: large;">Ministere</ion-title>
   </ion-toolbar>
 </ion-header>
-<div class="sticky-top">
+<div class="sticky-top" >
   <ion-item lines="full">
-    <ion-button slot="start" size="small" fill="clear"> Idee Ecrit </ion-button>
-    <ion-button slot="end" size="small" fill="clear"
+    <ion-button slot="start" size="large" fill="clear" style="font-size: large;"> Idee Ecrit </ion-button>
+    <ion-button slot="end" size="large" fill="clear" style="font-size: large;"
       ><a href="/vocal/{{this.idminister}}">Idee Vocal</a></ion-button
     >
   </ion-item>
@@ -23,22 +23,23 @@
   <div class="con">
     <ion-row>
       <ion-col>
-        <ion-card class="crd">
+        <ion-card class="crd cd">
           <ion-card-header>
-            <div class="igm">
-              <img src="{{image}}" srcset="" />
-            </div>
-            <ion-card-title style="text-align: center; font-weight: bold"
+            <div class="min" style="text-align: center;">
+              <img class="min1" src="{{image}}" srcset="" style="margin-bottom: 3%;"/>
+           
+            <ion-card-title style="text-align: center; "
               >{{libelle}}</ion-card-title
             >
             <ion-card-content style="text-align: center">
               {{description}}
             </ion-card-content>
+          </div>
           </ion-card-header>
         </ion-card>
       </ion-col>
     </ion-row>
-
+<div style="width: 98%; margin-left: auto; margin-right: auto; box-shadow: 6%; border: 2%;">
     <div class="" *ngFor="let ide of ide, let i=index">
       <div class="card mt-2">
         <div class="card-header">
@@ -50,8 +51,8 @@
             </div>
             <div class="mm">
               <ion-label>
-                <h3>{{ide.user.username}}</h3>
-                <p>{{ide.date | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
+                <h3 style="font-size: large;">{{ide.user.username}}</h3>
+                <p style="font-size: 98%;">{{ide.date | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
               </ion-label>
             </div>
             <div>
@@ -63,6 +64,7 @@
                   class="fa-solid fa-ellipsis"
                   slot="start"
                   slot="start"
+                  style="font-size: large;"
                 ></i>
 
                 <ul class="dropdown-menu">
@@ -72,6 +74,7 @@
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
                       (click)="lireidee(ide.id_idee)"
+                      style="font-size: large;"
                     >
                       Modifier
                       <i
@@ -84,7 +87,7 @@
                     <button
                       class="dropdown-item"
                       (click)="supprimer(ide.id_idee)"
-                      href="#"
+                      style="font-size: large;"
                     >
                       Supprimer <i class="bi bi-trash3" style="color: red"></i>
                     </button>
@@ -94,7 +97,7 @@
             </div>
           </div>
         </div>
-        <div class="card-body">
+        <div class="card-body" style="font-size: large;">
           <p class="card-text">{{ide.contenu_idee}}</p>
         </div>
         <div class="card-footer text-muted">
@@ -124,7 +127,7 @@
                 <a routerLink="/commentaire/{{ide.id_idee}}"
                   ><i class="bi bi-chat-left-dots-fill iconComment"></i
                 ></a>
-                <div class="textComment">2 Commentaire</div>
+                <div class="textComment">{{ide.nbreComment}} Commentaire</div>
               </button>
             </div>
           </div>
@@ -132,22 +135,55 @@
       </div>
     </div>
   </div>
+  </div>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-input placeholder="Votre message" [(ngModel)]="cont"></ion-input>
-      <ion-buttons slot="end">
+    <ion-buttons >
+      <ion-input style="font-size: x-large;" placeholder=" Ecrivez votre message ici" [(ngModel)]="cont"></ion-input>
+     
         <ion-button (click)="onSubmit()">
-          <i class="bi bi-send"></i>
+          <i class="bi bi-send-fill" style="margin-left: 30%; font-size: x-large;"></i>
         </ion-button>
       </ion-buttons>
-    </ion-buttons>
+  
   </ion-toolbar>
 </ion-footer>
 
+<!-- -->
 <!-- Modal -->
-<div
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog mod" role="document">
+    <div class="modal-content">
+      <form
+      #update="ngForm"
+      (ngSubmit)="modifierPopup(id,update.value.contenu)"
+    >
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModal" style="text-align: center;">Modification</h5>
+       
+      </div>
+      <div class="modal-body">
+        <input
+          
+        ngModel="{{ideee}}"
+        class="form-control"
+        name="contenu"
+        id="contenu"
+      />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="butna" data-bs-dismiss="modal">Annuler</button>
+        <button type="submit" class="butn">Actualiser</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- -->
+
+<!-- Modal -->
+<!-- <div
   class="modal fade"
   id="exampleModal"
   tabindex="1"
@@ -162,6 +198,7 @@
       >
         <div class="form-group">
           <input
+          
             ngModel="{{ideee}}"
             class="form-control"
             name="contenu"
@@ -177,4 +214,4 @@
       </form>
     </div>
   </div>
-</div>
+</div> -->

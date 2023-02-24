@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { UserupdateComponent } from './userupdate/userupdate.component';
-
 @NgModule({
   declarations: [AppComponent, UserupdateComponent],
   imports: [
@@ -18,6 +17,7 @@ import { UserupdateComponent } from './userupdate/userupdate.component';
     FormsModule,
     HttpClientModule,
     Ng2SearchPipeModule,
+   
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

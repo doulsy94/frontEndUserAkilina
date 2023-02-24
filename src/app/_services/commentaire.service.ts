@@ -78,4 +78,7 @@ export class CommentaireService {
   lireCommentaireById(id_commentaire: any): Observable<any> {
     return this.http.get(`${AUTH_API}/lireParId/${id_commentaire}`);
   }
+
+  
+
 }

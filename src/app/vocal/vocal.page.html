@@ -1,10 +1,10 @@
 <ion-header>
   <ion-toolbar style="--background: #24a8f2">
-    <ion-title size="" style="color: white">Vocal</ion-title>
+    <ion-title style="color: white; font-size: large;">Vocal</ion-title>
     <ion-buttons slot="start">
       <ion-back-button
         text=""
-        style="color: white"
+        style="color: white; font-size: large;"
         defaultHref="ministere"
         (click)="goBack()"
       ></ion-back-button>
@@ -13,26 +13,28 @@
 </ion-header>
 <div class="sticky-top">
   <ion-item lines="full">
-    <ion-button slot="start" size="small" fill="clear" (click)="goBack()"
+    <ion-button slot="start" size="large" fill="clear" style="font-size: large;" (click)="goBack()"
       >Idee Ecrit</ion-button
     >
-    <ion-button slot="end" size="small" fill="clear">Idee vocal</ion-button>
+    <ion-button slot="end" size="large" fill="clear" style="font-size: large;">Idee vocal</ion-button>
   </ion-item>
 </div>
 
 <ion-content>
-  <div>
+  <div class="con">
     <ion-row>
       <ion-col>
-        <ion-card class="">
+        <ion-card class="crd cd">
           <ion-card-header>
-            <img class="igm" src="{{image}}" srcset="" />
-            <ion-card-title style="text-align: center; font-weight: bold"
+            <div class="min" style="text-align: center;">
+            <img class="min1" src="{{image}}" srcset="" style="margin-bottom: 1%;"/>
+            <ion-card-title style="text-align: center; "
               >{{libelle}}</ion-card-title
             >
             <ion-card-content style="text-align: center">
               {{description}}
             </ion-card-content>
+            </div>
           </ion-card-header>
         </ion-card>
       </ion-col>
@@ -51,7 +53,7 @@
                 position: absolute;
               top:2%;
               margin-left: 3.5%;
-                left: 210px;
+                left: 85%;
                 font-size: 2em !important;
                 color: red;
               "
@@ -61,13 +63,14 @@
             ></ion-icon>
           </div>
         </div>
-        <div class="mm">
+        <div class="mm" style="margin-top: 3%; margin-left: 6%;">
           <ion-label>
-            <h3 style="color: black">{{v.user.username}}</h3>
-            <p>{{v.dateCreation | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
+            <h3 style="color: black; font-size: large;">{{v.user.username}}</h3>
+            <p  style="font-size: 98%;">{{v.dateCreation | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
           </ion-label>
         </div>
-        <audio controls src="{{v.fileName}}" style="margin-top: -50%">
+        
+        <audio controls src="{{v.fileName}}" style="margin-top: -30%; margin-bottom: 35px; margin-left: 5%!important; margin-right: auto!important; width: 580%;">
           <a href="{{v.fileName}}"> Download audio </a>
         </audio>
         <ion-button
@@ -88,13 +91,14 @@
       class="ion-align-items-center"
       style="margin-right: 20px; margin-left: 20px"
     >
-      <ion-col size="8">
+      <ion-col size="9.5">
         <span *ngIf="!recording" style="font-size: 0.8em">
           Appuyez et maintenez pour enregistrer puis cliquez sur envoyer
         </span>
         <span *ngIf="recording"> {{durationDisplay}} </span>
       </ion-col>
-      <ion-col size="4" fill="clear" #recordbtn style="display: flex">
+     
+      <ion-col size="2.5" fill="clear" #recordbtn style="display: flex">
         <ion-button style="font-size: 0.7em">
           <ion-icon name="mic-outline" slot="icon-only"></ion-icon>
         </ion-button>
@@ -102,6 +106,7 @@
           <i class="bi bi-send"></i>
         </ion-button>
       </ion-col>
+
     </ion-row>
   </ion-toolbar>
 </ion-footer>

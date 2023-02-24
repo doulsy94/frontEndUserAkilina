@@ -30,11 +30,12 @@
     "@ionic/angular": "^6.1.9",
     "bootstrap": "^5.2.3",
     "capacitor-voice-recorder": "^4.0.2",
+    "ion-intl-tel-input": "^1.0.5",
     "ionicons": "^6.0.3",
     "ng2-search-filter": "^0.5.1",
     "ngx-pagination": "^6.0.3",
     "rxjs": "~7.5.0",
-    "sweetalert2": "^11.7.1",
+    "sweetalert2": "^11.4.8",
     "swiper": "^8.4.5",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

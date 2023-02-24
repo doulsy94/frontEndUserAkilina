@@ -87,4 +87,7 @@ export class MinistereService {
   supprimerMinistere(id_ministere: any, id_user: any): Observable<any> {
     return this.http.delete(`${AUTH_API}/supprimer/${id_ministere}/${id_user}`);
   }
+
+ 
+
 }

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar style="--background: #24a8f2">
-    <ion-title size="" style="color: white; text-align: center"
+    <ion-title style="color: white; text-align: center; font-size: large;"
       >Connexion</ion-title
     >
   </ion-toolbar>
@@ -25,7 +25,7 @@
             <div class="form-group">
               <label
                 ><ion-icon name="person-circle-outline"></ion-icon> EMAIL OU
-                NUMERO</label
+                NUMERO  <span style="color: red;">*</span> </label
               >
               <input
                 type="text"
@@ -47,14 +47,14 @@
             <div class="form-group">
               <label
                 ><ion-icon name="lock-closed-outline"></ion-icon> MOT DE
-                PASSE</label
+                PASSE  <span style="color: red;">*</span> </label
               >
-           <div class="form-control" style="display: flex;">
+           <div class="form-control " style="display: flex;">
               <input
-              style="border: none;"
+              style="border: none; width: 200%;"
               [type]="type ? 'password' : 'text'" 
                 type="password"
-               
+              
                 name="password"
                 [(ngModel)]="form.password"
                 required
@@ -63,7 +63,7 @@
                 placeholder="Mot de Passe"
               />
               <ion-icon [name]="type ? 'eye-off' : 'eye'" slot="end" color="dark" (click)="changeType()" style="font-family: 'Poppins';
-              font-style: normal; opacity: 0.5; margin-top: 2%; margin-left: 2%;"></ion-icon>
+              font-style: normal; opacity: 0.5; margin-top: -4%; margin-left: 2%; font-size: 50px;"></ion-icon>
             </div>
           </div>
             <div
@@ -83,14 +83,14 @@
                 <a routerLink="/resetpassword">Mot de passe oublié ?</a>
               </span>
             </p>
-            <div class="form-group form-check">
+            <!-- <div class="form-group form-check">
               <input
                 type="checkbox"
                 class="form-check-input ch"
                 id="exampleCheck1"
               />
               <p>Se souvenir de moi</p>
-            </div>
+            </div> -->
 
             <div class="text-center">
               <button type="submit" value="" class="connexion">
@@ -117,11 +117,11 @@
       </form>
     </div>
   </div>
-  <p class="txtAuth">Ou conectez-vous avec</p>
+  <!-- <p class="txtAuth">Ou conectez-vous avec</p>
 
   <div class="iconss">
     <i class="bi bi-facebook"></i>
     <i class="bi bi-google"></i>
     <i class="bi bi-github"></i>
-  </div>
+  </div> -->
 </ion-content>

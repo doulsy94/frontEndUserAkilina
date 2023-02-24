@@ -15,7 +15,7 @@ export class CommentairePage implements OnInit {
   idcommentaire: any;
   ididee: any;
   comment: any;
-  contenu: any;
+  contenu: any="";
   ide: any;
   contenu_ide: any;
   cont: any;
@@ -24,7 +24,7 @@ export class CommentairePage implements OnInit {
   comm: any;
   conten: any;
   id: number = 0;
-  imageuser: any;
+  imageuser: any="";
   msg:any;
 
   constructor(
@@ -79,11 +79,12 @@ export class CommentairePage implements OnInit {
             allowOutsideClick: false,
           }).then((result) => {
             if (result.isConfirmed) {
+              this.reloadPage();
               this. lirecommentaireparididee();
              // this.reloadPage();
             }
           });
-          this.resetForm();
+         // this.resetForm();
         }
         });
         console.log(this.msg);
@@ -116,8 +117,8 @@ export class CommentairePage implements OnInit {
   .lireCommentaireParIdIdee(this.idcommentaire)
   .subscribe((data) => {
     this.comment = data;
-    this.contenu = data[0].contenu_commentaire;
-    this.imageuser = data[0].imageuser;
+    this.contenu = data[0]?.contenu_commentaire;
+    this.imageuser = data[0]?.imageuser;
     console.log(data[0].contenu_commentaire);
 
     console.log(this.comment.length);

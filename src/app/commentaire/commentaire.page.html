@@ -1,10 +1,10 @@
 <ion-header>
   <ion-toolbar style="--background: #24a8f2">
-    <ion-title style="color: white">Commentaire</ion-title>
+    <ion-title style="color: white; font-size: large;">Commentaire</ion-title>
     <ion-buttons slot="start">
       <ion-back-button
         text=""
-        style="color: white"
+        style="color: white; font-size: large;"
         defaultHref="ministere"
         (click)="goBack()"
       ></ion-back-button>
@@ -16,13 +16,14 @@
   <div class="con">
     <ion-row>
       <ion-col>
-        <ion-card class="crd">
-          <ion-card-content style="text-align: center">
+        <ion-card class="crd" >
+          <ion-card-content style="text-align: center" style="font-size: large;">
             {{contenu_ide}}
           </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
+    <div style="width: 98%; margin-left: auto; margin-right: auto; box-shadow: 6%; border: 2%;">
 
     <div class="" *ngFor="let comment of comment, let i=index">
       <div class="card mt-2">
@@ -35,8 +36,8 @@
             </div>
             <div class="mm">
               <ion-label>
-                <h3>{{comment.user.username}}</h3>
-                <p>{{comment.date | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
+                <h3 style="font-size: large;">{{comment.user.username}}</h3>
+                <p style="font-size: 98%;">{{comment.date | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
               </ion-label>
             </div>
             <div>
@@ -48,6 +49,7 @@
                   class="fa-solid fa-ellipsis"
                   slot="start"
                   slot="start"
+                  style="font-size: large;"
                 ></i>
 
                 <ul class="dropdown-menu">
@@ -57,6 +59,7 @@
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal1"
                       (click)="lirecomment(comment.id_commentaire)"
+                      style="font-size: large;"
                     >
                       Modifier
                       <i
@@ -70,6 +73,7 @@
                       class="dropdown-item"
                       href="#"
                       (click)="supprimer(comment.id_commentaire)"
+                      style="font-size: large;"
                     >
                       Supprimer <i class="bi bi-trash3" style="color: red"></i>
                     </button>
@@ -79,27 +83,59 @@
             </div>
           </div>
         </div>
-        <div class="card-body">
+        <div class="card-body"  style="font-size: large;">
           <p class="card-text">{{comment.contenu_commentaire}}</p>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-input placeholder="Votre message" [(ngModel)]="cont"></ion-input>
-      <ion-buttons slot="end">
-        <ion-button (click)="onSubmit()"><i class="bi bi-send"></i></ion-button>
+    <ion-buttons>
+      <ion-input style="font-size: x-large;" placeholder="Ecrivez votre commentaire" [(ngModel)]="cont"></ion-input>
+      <ion-buttons >
+        <ion-button (click)="onSubmit()">  <i class="bi bi-send-fill" style="margin-left: 30%; font-size: x-large;"></i></ion-button>
       </ion-buttons>
     </ion-buttons>
   </ion-toolbar>
 </ion-footer>
 
+<!-- -->
 <!-- Modal -->
-<div
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog mod" role="document">
+    <div class="modal-content">
+      <form
+      #update="ngForm"
+      (ngSubmit)="modifierPopup(id,update.value.contenu)"
+    >
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModal1" style="text-align: center;">Modification</h5>
+       
+      </div>
+      <div class="modal-body">
+        <input
+          
+        ngModel="{{comm}}"
+        class="form-control"
+        name="contenu"
+        id="contenu"
+      />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="butna" data-bs-dismiss="modal">Annuler</button>
+        <button type="submit" class="butn">Actualiser</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<!-- <div
   class="modal fade"
   id="exampleModal1"
   tabindex="1"
@@ -129,4 +165,4 @@
       </form>
     </div>
   </div>
-</div>
+</div> -->

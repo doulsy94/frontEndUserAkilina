@@ -16,6 +16,8 @@ export class AccueilPage implements OnInit {
     speed: 400,
   };
 
+  responsive= true
+
   p: any;
 
   searchText: any;

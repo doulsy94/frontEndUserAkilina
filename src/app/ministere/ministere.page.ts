@@ -1,10 +1,12 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Idee } from '../model/idee';
 import { User } from '../model/user';
+import { CommentaireService } from '../_services/commentaire.service';
 import { IdeeService } from '../_services/idee.service';
 import { MinistereService } from '../_services/ministere.service';
 import { TokenStorageService } from '../_services/token-storage.service';
@@ -29,7 +31,7 @@ export class MinisterePage implements OnInit {
   ideee: any;
   ididee: any;
   id: number = 0;
-  contenu: any;
+  contenu: any="";
   date: any;
   ide: any;
   textVariable: any;
@@ -37,24 +39,27 @@ export class MinisterePage implements OnInit {
   cont: any;
   msg:any;
   idee1: any;
-  imageuser: any;
+  imageuser: any ="";
   userlike:any
   ide1: any;
   id_idee:any
+  idcommentaire: any;
 likes: any
   isClicked = false;
-
+  nbreComment: any
+  comment: any;
   constructor(
     private router: Router,
     private storageService: TokenStorageService,
     private back: Location,
     private route: ActivatedRoute,
     private ministere: MinistereService,
-    private ideeService: IdeeService
+    private ideeService: IdeeService,
+    private commentaire: CommentaireService,
+    private modal: ModalController,
   ) {}
 
   onSubmit() {
-    
     this.ideeService
       .ajouterIdee(this.cont, this.id_user, this.idminister)
       .subscribe((data) => {
@@ -120,9 +125,9 @@ likes: any
     console.log('utilisateur ' + this.id_user);
 
     this.ministere.lireMinistereById(this.idminister).subscribe((data) => {
-      this.libelle = data.libelle;
-      this.image = data.image;
-      this.description = data.description;
+      this.libelle = data?.libelle;
+      this.image = data?.image;
+      this.description = data?.description;
       console.log(data);
     });
 
@@ -139,8 +144,8 @@ likes: any
 
       this.contenu = data[0].contenu_idee;
       this.imageuser = data[0].imageuser;
-      this.date = data[0].date;
-      this.likes = data[0].likes;
+      this.date = data[0]?.date;
+      this.likes = data[0]?.likes;
       console.log("likeeeeee"+data[0].likes);
       console.log(data[0].isclick);
 
@@ -208,6 +213,8 @@ likes: any
     });
   }
 
+  
+
   lireidee(id_idee: any) {
     this.ideeService.lireIdeeById(id_idee).subscribe((data) => {
       //location.reload();
@@ -224,29 +231,54 @@ likes: any
     this.ideeService
       .modifierIdee(id_idee, this.id_user, contenu)
       .subscribe((data) => {
+        this.msg = data.data;
+        console.log(this.msg);
         this.idee1 = data;
         console.log('aaaaaaaaa' + data);
-      });
-
-    Swal.fire({
-      position: 'center',
-
-      text: 'Idee modifier avec success!!',
-      icon: 'success',
-      heightAuto: false,
-      showConfirmButton: true,
-      confirmButtonText: 'OK',
-      confirmButtonColor: '#0857b5',
-      showDenyButton: false,
-      showCancelButton: false,
-      allowOutsideClick: false,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.reloadPage();
-
-      }
-    });
-    this.lireideeparid();
+        if(data.data == "Veuillez utiliser des mots approprié"){
+          Swal.fire({ 
+            position: 'center',
+      
+            text: "Veuillez S.V.P utilisez des mots approprié",
+            icon: 'error',
+            heightAuto: false,
+            showConfirmButton: true,
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#0857b5',
+            showDenyButton: false,
+            showCancelButton: false,
+            allowOutsideClick: false,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this. lireideeparid();
+             // this.reloadPage();
+            }
+          });
+        }else{
+          Swal.fire({ 
+            position: 'center',
+      
+            text:"Idee modifier avec succès",
+            icon: 'success',
+            heightAuto: false,
+            showConfirmButton: true,
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#0857b5',
+            showDenyButton: false,
+            showCancelButton: false,
+            allowOutsideClick: false,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.reloadPage();
+              this. lireideeparid();
+            
+            }
+          });
+         // this.resetForm();
+          
+        }
+        });
+        console.log(this.msg);
 
   }
 
@@ -337,4 +369,9 @@ likes: any
       }
     )
   }
+
+  cancel() {
+    this.modal.dismiss(null, 'cancel');
+  }
+
 }
