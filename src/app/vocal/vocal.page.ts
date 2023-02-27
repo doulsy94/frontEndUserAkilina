@@ -51,8 +51,8 @@ voc:any
       this.voc = data;
 
       this.file = data;
-      this.date = data[0].date;
-      console.log(data[1].fileName);
+      this.date = data[0]?.date;
+      console.log(data[1]?.fileName);
 
     });
 
@@ -112,7 +112,7 @@ async loadFiles(){
     this.fichierVocal = result.files[0];
     this.storedFileNames = result.files;
     console.log("chemin du fichier tyuio "+this.storedFileNames)
-    console.log("chemin du fichier "+this.fichierVocal[0])
+    //console.log("chemin du fichier "+this.fichierVocal[0])
     
   });
 }

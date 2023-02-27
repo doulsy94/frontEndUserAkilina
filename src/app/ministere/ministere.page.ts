@@ -142,12 +142,12 @@ likes: any
     this.ideeService.lireIdeeParIdMinistere(this.ididee).subscribe((data) => {
       this.ide = data;
 
-      this.contenu = data[0].contenu_idee;
-      this.imageuser = data[0].imageuser;
+      this.contenu = data[0]?.contenu_idee;
+      this.imageuser = data[0]?.imageuser;
       this.date = data[0]?.date;
       this.likes = data[0]?.likes;
-      console.log("likeeeeee"+data[0].likes);
-      console.log(data[0].isclick);
+      console.log("likeeeeee"+data[0]?.likes);
+      console.log(data[0]?.isclick);
 
       console.log(this.ide.length);
     });
@@ -235,7 +235,8 @@ likes: any
         console.log(this.msg);
         this.idee1 = data;
         console.log('aaaaaaaaa' + data);
-        if(data.data == "Veuillez utiliser des mots approprié"){
+        console.log(this.msg);
+        if(this.msg.includes("Veuillez utiliser des mots approprié")){
           Swal.fire({ 
             position: 'center',
       

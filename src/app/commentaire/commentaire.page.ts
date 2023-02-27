@@ -26,6 +26,7 @@ export class CommentairePage implements OnInit {
   id: number = 0;
   imageuser: any="";
   msg:any;
+  date: any;
 
   constructor(
     private router: Router,
@@ -42,7 +43,7 @@ export class CommentairePage implements OnInit {
       .subscribe((data) => {
         this.msg = data.data;
         console.log(this.msg);
-       
+        this.date = data.date;
         console.log(data);
     
         if(data.data == "Veuillez utiliser des mots approprié"){
@@ -202,27 +203,54 @@ export class CommentairePage implements OnInit {
     this.commentaire
       .modifierCommentaire(id_commentaire, this.id_user, contenu)
       .subscribe((data) => {
+        this.msg = data.data;
+        console.log(this.msg);
         this.conten = data;
         console.log('aaaaaaaaa' + data);
-      });
-
-    Swal.fire({
-      position: 'center',
-
-      text: 'Commentaire modifier avec success!!',
-      icon: 'success',
-      heightAuto: false,
-      showConfirmButton: true,
-      confirmButtonText: 'OK',
-      confirmButtonColor: '#0857b5',
-      showDenyButton: false,
-      showCancelButton: false,
-      allowOutsideClick: false,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.reloadPage();
-      }
-    });
-    this.lirecommentaireparididee();
-  }
+        console.log(this.msg);
+        if(this.msg.includes("Veuillez utiliser des mots approprié")){
+          Swal.fire({ 
+            position: 'center',
+      
+            text: "Veuillez S.V.P utilisez des mots approprié",
+            icon: 'error',
+            heightAuto: false,
+            showConfirmButton: true,
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#0857b5',
+            showDenyButton: false,
+            showCancelButton: false,
+            allowOutsideClick: false,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this. lirecommentaireparididee();
+             // this.reloadPage();
+            }
+          });
+        }else{
+          Swal.fire({ 
+            position: 'center',
+      
+            text:"Commentaire modifier avec succès",
+            icon: 'success',
+            heightAuto: false,
+            showConfirmButton: true,
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#0857b5',
+            showDenyButton: false,
+            showCancelButton: false,
+            allowOutsideClick: false,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.reloadPage();
+              this. lirecommentaireparididee();
+            
+            }
+          });
+         // this.resetForm();
+          
+        }
+        });
+        console.log(this.msg);
+}
 }

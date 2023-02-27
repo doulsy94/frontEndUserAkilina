@@ -20,6 +20,8 @@ export class UserupdateComponent implements OnInit {
   imageuser: any;
 
   ngOnInit(): void {
+
+
     this.id_user = this.storageService.getUser().id_user;
     console.log('identifiant' + this.id_user);
 
@@ -74,8 +76,13 @@ export class UserupdateComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.cancel() ;
+        this.reloadPage();
 
       }
     });
+  }
+
+  reloadPage(): void {
+    window.location.reload();
   }
 }

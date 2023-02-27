@@ -50,6 +50,7 @@ export class ConnexionPage implements OnInit {
         this.roles = this.tokenStorage.getUser().roles;
 
         this.router.navigate(['/accueil']);
+        
       },
       (err) => {
         this.errorMessage = err.error.message;

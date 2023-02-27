@@ -51,6 +51,7 @@ export class ProfilPage implements OnInit {
     console.log(this.imageuser);
     this.authService.modifierImageUser(this.id_user, this.imageuser).subscribe((data) => {
       console.log('data: ' + JSON.stringify(data));
+      
     });
   }
 

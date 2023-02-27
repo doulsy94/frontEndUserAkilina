@@ -39,6 +39,8 @@
         </ion-card>
       </ion-col>
     </ion-row>
+    <div style="text-align: center; font-weight: bolder; font-size: x-large;">Partager vos vocaux ici</div>
+
     <ion-card class="crd" *ngFor="let v of voc">
       <div class="tout">
         <div class="first">
@@ -69,7 +71,7 @@
             <p  style="font-size: 98%;">{{v.dateCreation | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
           </ion-label>
         </div>
-        
+       
         <audio controls src="{{v.fileName}}" style="margin-top: -30%; margin-bottom: 35px; margin-left: 5%!important; margin-right: auto!important; width: 580%;">
           <a href="{{v.fileName}}"> Download audio </a>
         </audio>
