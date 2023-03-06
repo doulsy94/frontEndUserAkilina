@@ -251,7 +251,7 @@ likes: any
             allowOutsideClick: false,
           }).then((result) => {
             if (result.isConfirmed) {
-              this. lireideeparid();
+              this.lireideeparid();
              // this.reloadPage();
             }
           });

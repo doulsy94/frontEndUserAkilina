@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { Location } from '@angular/common';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -56,7 +57,25 @@ export class ResetPasswordPage implements OnInit, OnDestroy {
         }
       )
     );
-    this.router.navigate(['/connexion']);
+    Swal.fire({ 
+      position: 'center',
+
+      text:"Mot de Passe réinitialiser avec succès, votre nouveau mot de passe sera envoyé dans votre email ",
+      icon: 'success',
+      heightAuto: false,
+      showConfirmButton: true,
+      confirmButtonText: 'OK',
+      confirmButtonColor: '#0857b5',
+      showDenyButton: false,
+      showCancelButton: false,
+      allowOutsideClick: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/connexion']);
+      
+      }
+    });
+   
 
   }
 
